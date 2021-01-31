@@ -3,7 +3,7 @@
     <client-only>
       <NuxtLink
         v-if="pageName === 'about-me'"
-        to="/"
+        to="/project-overview/cell-counter"
         class="inline-block text-sm px-4 py-2 leading-none border rounded text-black border-white hover:border-transparent hover:text-teal-500 hover:bg-white"
       >
         Projects

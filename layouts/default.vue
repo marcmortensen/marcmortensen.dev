@@ -1,13 +1,13 @@
 <template>
-  <div class="min-h-screen overflow-x-hidden flex-grow flex flex-col">
-    <main>
-      <div class="header">
+  <div class="flex min-h-screen overflow-x-hidden flex-grow flex-col">
+    <main class="flex flex-col min-h-screen">
+      <div class="flex-initial header">
         <Header
           :page-name="pageName"
           class="w-full absolute sm:relative left-0 top-0"
         ></Header>
       </div>
-      <Nuxt class="" />
+      <Nuxt class="flex-grow" />
     </main>
   </div>
 </template>

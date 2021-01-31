@@ -1,6 +1,6 @@
 <template>
   <div class="min-h-screen overflow-x-hidden flex flex-grow flex-col">
-    <main class="h-screen flex flex-col-reverse sm:flex-col">
+    <main class="flex flex-col-reverse sm:flex-col">
       <div class="header">
         <client-only>
           <img
