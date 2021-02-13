@@ -1,23 +1,19 @@
 <template>
-  <div class="flex min-h-screen overflow-x-hidden flex-grow flex-col">
-    <main class="flex flex-col min-h-screen">
-      <div class="flex-initial header">
-        <Header
-          :page-name="pageName"
-          class="w-full absolute sm:relative left-0 top-0"
-        ></Header>
+  <div>
+    <TheHeader class="z-40" />
+    <main class="min-h-screen w-full">
+      <div class="pt-13">
+        <Nuxt class="relative" />
       </div>
-      <Nuxt class="flex-grow" />
     </main>
   </div>
 </template>
 
 <script>
+import TheHeader from '@/components/TheHeader/index.vue';
 export default {
-  computed: {
-    pageName() {
-      return this.$store.getters['page/getName'];
-    },
+  components: {
+    TheHeader,
   },
 };
 </script>

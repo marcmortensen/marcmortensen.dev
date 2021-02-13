@@ -1,73 +1,53 @@
 <template>
-  <div class="flex flex-col flex-grow justify-center">
-    <div class="flex items-center">
-      <div class="container">
-        <h1>Hello.</h1>
-        <p style="font-weight: 500; font-size: 2.2em">I'm Marc Mortensen.</p>
-        <p>
-          A sotware developer interested in web development and Computer vision.
-          Some of my work is open source and publicly available on
-          <a href="https://github.com/marcmortensen" target="_blank">GitHub</a>.
-        </p>
-        <p>
-          Outside of programming, i enjoy video games, memes and reading.
-          Currently located in Girona (Spain), feel free to drop me an email at
-          marcmortensen77[at]gmail[dot]com.
-        </p>
+  <div class="lg:min-h-screen-height-header">
+    <div class="w-full grid grid-cols-1 lg:grid-cols-2 lg:gap-4 content-center">
+      <div
+        class="row-start-2 row-span-2 lg:col-start-1 lg:row-start-1 flex items-center justify-center lg:w-full lg:h-screen-height-header lg:sticky lg:top-header"
+      >
+        <div
+          class="h-2/3 w-4/5 py-5 sm:h-1/3 sm:w-3/5 lg:flex lg:justify-end lg:h-full lg:w-full lg:py-10"
+        >
+          <img
+            alt="Marc Mortensen"
+            src="~/assets/img/MarcMortensen.jpeg"
+            class="object-scale-down"
+          />
+        </div>
       </div>
-      <div class="hidden sm:block p-10">
-        <img
-          class="w-full"
-          alt="Marc Mortensen"
-          :src="require('~/assets/img/MarcMortensen.jpeg')"
-        />
+      <div
+        class="self-end row-start-1 col-start-1 lg:row-span-1 lg:row-start-1 lg:col-start-2"
+      >
+        <div class="py-5 lg:px-10 flex flex-col justify-center items-center">
+          <h1 class="font-medium mb-0 text-65">Hello.</h1>
+          <p class="font-medium text-30">I'm Marc Mortensen.</p>
+        </div>
+      </div>
+      <div class="row-start-4 lg:row-span-1 lg:row-start-2 lg:col-start-2">
+        <div class="flex flex-col justify-center py-5 items-center lg:px-10">
+          <div class="font-light text-18 px-2 sm:px-5 my-4 max-w-lg">
+            <p>
+              A sotware developer interested in web development and Computer
+              vision. Some of my work is open source and publicly available on
+              <a href="https://github.com/marcmortensen" target="_blank"
+                >GitHub</a
+              >.
+            </p>
+            <p class="my-4">
+              Outside of programming, i enjoy video games, memes and reading.
+              Currently located in Girona (Spain), feel free to drop me an email
+              at marcmortensen77[at]gmail[dot]com.
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-const header = {
-  imagePath: require('~/assets/img/MarcMortensen.jpeg'),
-  alt: 'Marc Mortensen',
-};
-
 export default {
-  layout: 'imgHeader',
   created() {
     this.$store.commit('page/setName', 'about-me');
-    this.$store.commit('page/setHeader', header);
   },
 };
 </script>
-
-<style>
-/* Sample `apply` at-rules with Tailwind CSS
-.container {
-@apply min-h-screen flex justify-center items-center text-center mx-auto;
-}
-*/
-h1 {
-  font-size: 4.5em;
-  font-weight: 500;
-  margin-bottom: 0;
-}
-
-.links {
-  padding-top: 15px;
-}
-
-p {
-  font-size: 1.3em;
-  font-weight: 300;
-  line-height: 1.4;
-  max-width: 26em;
-}
-p {
-  display: block;
-  margin-block-start: 1em;
-  margin-block-end: 1em;
-  margin-inline-start: 0px;
-  margin-inline-end: 0px;
-}
-</style>

@@ -1,13 +1,14 @@
 <template>
-  <div>
-    <vue-arc-text
-      ref="arctext"
-      :text="text"
-      :arc="arc"
-      :direction="direction"
-      :class="className"
-    ></vue-arc-text>
-  </div>
+  <vue-arc-text
+    :key="text + arc"
+    ref="arctext"
+    :text="text"
+    :arc="arc"
+    :direction="direction"
+    :class="className"
+    @mouseover.native="mouseOver"
+    @mouseleave.native="mouseLeave"
+  ></vue-arc-text>
 </template>
 
 <script>
@@ -25,11 +26,31 @@ export default {
     },
     arc: {
       type: Number,
-      default: 150,
+      default: 600,
     },
     direction: {
       type: Number,
       default: 1,
+    },
+  },
+  data() {
+    return { hover: false };
+  },
+  methods: {
+    mouseOver() {
+      if (this.hover) {
+        return;
+      }
+      this.hover = true;
+      this.$emit('mouseOver', this.hover);
+    },
+
+    mouseLeave() {
+      if (!this.hover) {
+        return;
+      }
+      this.hover = false;
+      this.$emit('mouseOver', this.hover);
     },
   },
 };
