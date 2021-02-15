@@ -6,7 +6,7 @@
       :initial-slide="currentProjectPosition"
       class="h-full"
       @afterChange="afterChange"
-      @wheel.native="handleScroll"
+      @wheel.native="handleWheel"
     >
       <div v-for="(project, index) in projects" :key="index" class="w-full">
         <ProjectOverview class="h-full" :project="displayProject(project)" />
@@ -32,6 +32,8 @@ export default {
     return {
       projects,
       sliderOptions,
+      ongoingWheel: false,
+      ongoingWheelTimeout: undefined,
     };
   },
   computed: {
@@ -80,11 +82,30 @@ export default {
     afterChange(nextProjectIndex) {
       this.currentProject = projects[nextProjectIndex].id;
     },
-    handleScroll($event) {
-      if ($event.deltaY > 0) {
-        return this.$refs.projectsOverviewCarusel.next();
+    preventMultipleWheelEvents() {
+      if (this.ongoingWheelTimeout !== undefined) {
+        clearTimeout(this.ongoingWheelTimeout);
       }
-      return this.$refs.projectsOverviewCarusel.prev();
+      this.ongoingWheelTimeout = setTimeout(() => {
+        this.ongoingWheel = false;
+      }, 200);
+    },
+
+    handleWheel(event) {
+      if (event.ctrlKey || (event.deltaY < 30 && event.deltaY > -30)) {
+        return;
+      }
+      this.preventMultipleWheelEvents();
+      if (this.ongoingWheel) {
+        return;
+      }
+      this.ongoingWheel = true;
+
+      if (event.deltaY < 0) {
+        this.$refs.projectsOverviewCarusel.prev();
+      } else if (event.deltaY > 0) {
+        this.$refs.projectsOverviewCarusel.next();
+      }
     },
   },
 };

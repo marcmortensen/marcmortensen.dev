@@ -1,16 +1,14 @@
 <template>
-  <div
-    class="relative overflow-hidden bg-red-900"
-    :class="`bg-${project.bg}-900`"
-  >
-    <base-text-arc
-      class="z-10"
-      :class="active ? 'text-4xl md:text-6xl' : 'text-3xl md:text-5xl'"
-      :text="project.title"
-      :arc="active ? 800 : 3000"
-      class-name="absolute center-absolute title-cellCounter"
-      @mouseOver="mouseOver"
-    />
+  <div class="relative overflow-hidden">
+    <div class="pl-6 absolute top-1/2 max-h-1/2 h-full flex xl:justify-start">
+      <div
+        class="pb-16 text-50 md:text-100 lg:text-150 xl:text-200 max-w-5xl self-end xl:pb-0 text-white"
+        @mouseenter="active = true"
+        @mouseleave="active = false"
+      >
+        {{ project.title }}
+      </div>
+    </div>
     <Component
       :is="project.background"
       :active="active"
@@ -32,20 +30,5 @@ export default {
       active: false,
     };
   },
-  methods: {
-    mouseOver(active) {
-      this.active = active;
-    },
-  },
 };
 </script>
-<style>
-.center-absolute {
-  top: 50%;
-  left: 50%;
-  transform: translate(-25%, -50%);
-}
-.title-cellCounter {
-  color: white;
-}
-</style>

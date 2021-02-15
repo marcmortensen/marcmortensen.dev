@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-red"></div>
+  <div :class="active ? 'bg-red' : 'bg-primary'"></div>
 </template>
 
 <script>

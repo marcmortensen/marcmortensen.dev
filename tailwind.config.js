@@ -37,6 +37,7 @@ module.exports = {
       50: '50px',
       65: '65px',
       100: '100px',
+      150: '150px',
       200: '200px',
     },
     letterSpacing: {
@@ -73,6 +74,10 @@ module.exports = {
       inset: {
         header: '3.25rem',
         13: '3.25rem',
+        '1/2': '50%',
+        '1/4': '25%',
+        '3/4': '75%',
+        full: '100%',
       },
       padding: {
         full: '100%',
