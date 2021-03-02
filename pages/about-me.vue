@@ -5,12 +5,12 @@
         class="row-start-2 row-span-2 lg:col-start-1 lg:row-start-1 flex items-center justify-center lg:w-full lg:h-screen-height-header lg:sticky lg:top-header"
       >
         <div
-          class="h-2/3 w-4/5 py-5 sm:h-1/3 sm:w-3/5 lg:flex lg:justify-end lg:h-full lg:w-full lg:py-10"
+          class="h-4/5 w-4/5 py-5 sm:h-3/4 sm:w-3/4 lg:flex lg:justify-end lg:h-full lg:w-full lg:py-10"
         >
           <img
             alt="Marc Mortensen"
             src="~/assets/img/MarcMortensen.jpeg"
-            class="object-scale-down"
+            class="object-contain w-full h-full"
           />
         </div>
       </div>

@@ -38,6 +38,7 @@ module.exports = {
       65: '65px',
       100: '100px',
       150: '150px',
+      170: '170px',
       200: '200px',
     },
     letterSpacing: {
@@ -56,7 +57,6 @@ module.exports = {
       700: '7px',
     },
     colors: {
-      red: '#ee4444', // delete, only for test purposes
       transparent: 'transparent',
       primary: '#F78D1E',
       white: '#ffffff',
@@ -64,12 +64,20 @@ module.exports = {
       'gray-dark': '#707070',
       gray: '#d4d4d4',
       black: '#000000',
+      yellow: '#FEFFBE',
+      red: '#ff0000',
+      green: '#007300',
     },
     extend: {
       scale: {
         200: '2',
         300: '3',
         '4/3': 'calc(4/3)',
+        0: '0',
+        25: '.25',
+        50: '.5',
+        75: '.75',
+        100: '1',
       },
       inset: {
         header: '3.25rem',
@@ -90,6 +98,7 @@ module.exports = {
       },
       minHeight: {
         'screen-height-header': 'calc(100vh - 3.25rem)',
+        'screen-height-header-extra': 'calc(100vh - 8.25rem)',
       },
       spacing: {
         11: '2.75rem',
@@ -99,8 +108,10 @@ module.exports = {
         49: '12.5rem',
         80: '20rem',
         128: '32rem',
+        144: '36rem',
         'height-header': '3.25rem',
         'screen-height-header': 'calc(100vh - 3.25rem)',
+        'screen-height-header-extra': 'calc(100vh - 8.25rem)',
       },
     },
   },

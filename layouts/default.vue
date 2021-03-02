@@ -3,7 +3,7 @@
     <TheHeader class="z-40" />
     <main class="min-h-screen w-full">
       <div class="pt-13">
-        <Nuxt class="relative" />
+        <Nuxt />
       </div>
     </main>
   </div>
