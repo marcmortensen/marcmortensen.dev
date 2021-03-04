@@ -7,7 +7,10 @@
         class="min-screen-height-header-extra lg:min-h-screen-height-header flex flex-col p-5 justify-end"
       >
         <div class="w-full h-full">
-          <div class="text-35 my-5">{{ project.title }}</div>
+          <ProjectIntro
+            :title="project.title"
+            :technologies="project.technologies"
+          />
           <div class="text-20 space-y-2">
             <p>
               The aim of this project was to take a look at AI, because AI can
@@ -186,27 +189,31 @@
 
 <script>
 import Lamp from '@/components/Lamp/index.vue';
-import { projects, sentimentAnalysisId } from '@/utils/projects';
+import ProjectIntro from '@/components/Project/Intro/index.vue';
+import { sentimentAnalysis } from '~/utils/project';
 
-// eslint-disable-next-line no-unused-vars
 const lampTypes = {
   GOOD: 'GOOD',
   BAD: 'BAD',
   NEUTRAL: 'NEUTRAL',
 };
+
 export default {
+  layout: 'project',
   components: {
     Lamp,
+    ProjectIntro,
   },
   data() {
     return {
-      project: projects.filter(
-        (project) => project.id === sentimentAnalysisId
-      )[0],
+      project: sentimentAnalysis,
       lamps: [],
       lampTypes,
     };
   },
   computed: {},
+  created() {
+    this.$store.commit('lastProjectSeen/setIndex', sentimentAnalysis.index);
+  },
 };
 </script>

@@ -3,7 +3,7 @@
     <div class="pl-6 absolute top-1/2 max-h-1/2 h-full flex xl:justify-start">
       <NuxtLink
         :to="`/project/${project.id}`"
-        class="pb-16 text-50 md:text-100 lg:text-150 xl:text-170 max-w-5xl self-end xl:pb-0 z-30"
+        class="pb-16 text-50 md:text-100 lg:text-150 max-w-5xl self-end xl:pb-0 z-30"
         @mouseenter.native="active = true"
         @mouseleave.native="active = false"
       >

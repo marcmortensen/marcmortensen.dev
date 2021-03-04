@@ -26,7 +26,7 @@
             />
           </div>
         </div>
-        <div class="h-32 md:h-144 w-full flex justify-center relative">
+        <div class="h-32 md:h-128 w-full flex justify-center relative">
           <div class="border-2 lg:border-8 h-full text-black"></div>
           <div class="absolute top-full -mt-20 lg:-mt-12">
             <Lamp

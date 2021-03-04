@@ -1,6 +1,6 @@
 <template>
   <nav
-    class="z-10 fixed w-full top-0 flex h-13 bg-white border-b border-solid border-gray-dark"
+    class="fixed w-full top-0 flex h-13 bg-white border-b border-solid border-gray-dark"
   >
     <NuxtLink
       to="/project-overview"

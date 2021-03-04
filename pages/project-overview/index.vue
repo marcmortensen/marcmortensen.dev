@@ -9,7 +9,11 @@
       @wheel.native="handleWheel"
     >
       <div v-for="(project, index) in projects" :key="index" class="w-full">
-        <ProjectOverview class="h-full" :project="displayProject(project)" />
+        <ProjectOverview
+          ref="project"
+          class="h-full"
+          :project="displayProject(project)"
+        />
       </div>
     </VueSlickCarousel>
   </div>
@@ -17,9 +21,9 @@
 
 <script>
 import ProjectOverview from '@/components/Project/Overview';
-import { projects, DEFAULT_PROJECT_ID } from '@/utils/projects';
-import { sliderOptions } from '@/utils/projectOverview';
 import VueSlickCarousel from 'vue-slick-carousel';
+import { DEFAULT_PROJECT_ID } from '~/utils/project';
+import { sliderOptions, projects } from '~/utils/projectsOverview';
 import 'vue-slick-carousel/dist/vue-slick-carousel.css';
 import 'vue-slick-carousel/dist/vue-slick-carousel-theme.css';
 
@@ -34,6 +38,7 @@ export default {
       sliderOptions,
       ongoingWheel: false,
       ongoingWheelTimeout: undefined,
+      hasPurgedPreviousWheel: false,
     };
   },
   computed: {
@@ -60,17 +65,29 @@ export default {
     if (route.query.project) {
       return;
     }
-    const initialProject =
-      store.getters['project/getName'] || DEFAULT_PROJECT_ID;
+
+    const lastSeenProjectName = store.getters['lastProjectSeen/getIndex']
+      ? projects[store.getters['lastProjectSeen/getIndex']]
+      : null;
+
+    const initialProject = lastSeenProjectName || DEFAULT_PROJECT_ID;
     redirect({ ...route, query: { project: initialProject } });
   },
   watch: {
     currentProject: {
       immediate: true,
       handler(project) {
-        this.$store.commit('project/setName', project);
+        this.$store.commit(
+          'lastProjectSeen/setIndex',
+          projects.findIndex((_project) => _project.id === project)
+        );
       },
     },
+  },
+  mounted() {
+    setTimeout(() => {
+      this.hasPurgedPreviousWheel = true;
+    }, 100);
   },
   methods: {
     displayProject(project) {
@@ -88,11 +105,15 @@ export default {
       }
       this.ongoingWheelTimeout = setTimeout(() => {
         this.ongoingWheel = false;
-      }, 200);
+      }, 300);
     },
 
     handleWheel(event) {
-      if (event.ctrlKey || (event.deltaY < 30 && event.deltaY > -30)) {
+      if (
+        event.ctrlKey ||
+        (event.deltaY < 30 && event.deltaY > -30) ||
+        !this.hasPurgedPreviousWheel
+      ) {
         return;
       }
       this.preventMultipleWheelEvents();
@@ -101,9 +122,9 @@ export default {
       }
       this.ongoingWheel = true;
 
-      if (event.deltaY < 0) {
+      if (event.deltaY < 0 && this.hasPurgedPreviousWheel) {
         this.$refs.projectsOverviewCarusel.prev();
-      } else if (event.deltaY > 0) {
+      } else if (event.deltaY > 0 && this.hasPurgedPreviousWheel) {
         this.$refs.projectsOverviewCarusel.next();
       }
     },
