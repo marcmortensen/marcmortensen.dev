@@ -3,18 +3,17 @@
     <VueSlickCarousel
       ref="projectsOverviewCarusel"
       v-bind="sliderOptions"
-      :initial-slide="currentProjectPosition"
+      :initial-slide="initialSlide"
       class="h-full"
       @afterChange="afterChange"
       @wheel.native="handleWheel"
     >
-      <div v-for="(project, index) in projects" :key="index" class="w-full">
-        <ProjectOverview
-          ref="project"
-          class="h-full"
-          :project="displayProject(project)"
-        />
-      </div>
+      <ProjectOverview
+        v-for="project in projects"
+        :key="project.id"
+        class="w-full h-full"
+        :project="displayProject(project)"
+      />
     </VueSlickCarousel>
   </div>
 </template>
@@ -39,10 +38,11 @@ export default {
       ongoingWheel: false,
       ongoingWheelTimeout: undefined,
       hasPurgedPreviousWheel: false,
+      initialSlide: null,
     };
   },
   computed: {
-    currentProject: {
+    currentProjectName: {
       get() {
         return this.$route.query.project;
       },
@@ -53,28 +53,9 @@ export default {
         });
       },
     },
-
-    currentProjectPosition() {
-      return projects.findIndex(
-        (project) => project.id === this.currentProject
-      );
-    },
-  },
-  middleware({ store, route, redirect, next }) {
-    store.commit('page/setName', 'project-overview');
-    if (route.query.project) {
-      return;
-    }
-
-    const lastSeenProjectName = store.getters['lastProjectSeen/getIndex']
-      ? projects[store.getters['lastProjectSeen/getIndex']]
-      : null;
-
-    const initialProject = lastSeenProjectName || DEFAULT_PROJECT_ID;
-    redirect({ ...route, query: { project: initialProject } });
   },
   watch: {
-    currentProject: {
+    currentProjectName: {
       immediate: true,
       handler(project) {
         this.$store.commit(
@@ -83,6 +64,25 @@ export default {
         );
       },
     },
+  },
+  created() {
+    this.initialSlide = projects.findIndex(
+      (project) => project.id === this.currentProjectName
+    );
+  },
+  middleware({ store, route, redirect, next }) {
+    store.commit('page/setName', 'project-overview');
+    if (route.query.project) {
+      return;
+    }
+
+    const lastSeenProjectName =
+      store.getters['lastProjectSeen/getIndex'] !== -1
+        ? projects[store.getters['lastProjectSeen/getIndex']].id
+        : null;
+
+    const initialProject = lastSeenProjectName || DEFAULT_PROJECT_ID;
+    redirect({ ...route, query: { project: initialProject } });
   },
   mounted() {
     setTimeout(() => {
@@ -97,7 +97,7 @@ export default {
       };
     },
     afterChange(nextProjectIndex) {
-      this.currentProject = projects[nextProjectIndex].id;
+      this.currentProjectName = projects[nextProjectIndex].id;
     },
     preventMultipleWheelEvents() {
       if (this.ongoingWheelTimeout !== undefined) {

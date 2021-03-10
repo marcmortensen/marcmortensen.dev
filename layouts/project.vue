@@ -34,7 +34,7 @@ export default {
       return projects[this.currentProjectIndex];
     },
     nextProject() {
-      return this.currentProjectIndex < this.currentProjectIndex - 1
+      return this.currentProjectIndex < projects.length - 1
         ? projects[this.currentProjectIndex + 1]
         : projects[0];
     },

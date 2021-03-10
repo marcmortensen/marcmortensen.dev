@@ -211,7 +211,6 @@ export default {
       lampTypes,
     };
   },
-  computed: {},
   created() {
     this.$store.commit('lastProjectSeen/setIndex', sentimentAnalysis.index);
   },

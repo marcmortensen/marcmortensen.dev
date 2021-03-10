@@ -2,8 +2,9 @@ import { cellCounter, sentimentAnalysis } from '@/utils/project';
 export const sliderOptions = {
   dots: true,
   arrows: true,
-  infinite: true,
+  infinite: false,
   speed: 200,
+  lazyLoad: 'progressive',
   slidesToShow: 1,
   slidesToScroll: 1,
   accessibility: true,

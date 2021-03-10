@@ -29,9 +29,17 @@ export default {
     // https://go.nuxtjs.dev/tailwindcss
     '@nuxtjs/tailwindcss',
   ],
+  screen: {
+    xs: 0,
+    sm: 640,
+    md: 768,
+    lg: 1024,
+    xl: 1280,
+    '2xl': 1536,
+  },
 
   // Modules (https://go.nuxtjs.dev/config-modules)
-  modules: [],
+  modules: ['vue-screen/nuxt'],
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {},
