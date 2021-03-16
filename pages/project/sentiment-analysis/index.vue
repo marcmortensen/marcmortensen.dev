@@ -18,20 +18,20 @@
               understand. How can i make a program that understands a message
               and it's able to classify it into 3 categories:
               <span
-                class="text-green"
-                @mouseenter="lamps = [lampTypes.GOOD]"
+                class="text-lamp-type-good"
+                @mouseenter="lamps = [LampTypes.GOOD.id]"
                 @mouseleave="lamps = []"
                 >good</span
               ><span>, </span
               ><span
-                class="text-red"
-                @mouseenter="lamps = [lampTypes.BAD]"
+                class="text-lamp-type-bad"
+                @mouseenter="lamps = [LampTypes.BAD.id]"
                 @mouseleave="lamps = []"
                 >bad</span
               ><span>, </span>
               <span
-                class="text-yellow"
-                @mouseenter="lamps = [lampTypes.NEUTRAL]"
+                class="text-lamp-type-neutral"
+                @mouseenter="lamps = [LampTypes.NEUTRAL.id]"
                 @mouseleave="lamps = []"
                 >neutral</span
               ><span>.</span>
@@ -60,36 +60,36 @@
             class="text-30 sm:text-40 md:text-50 lg:text-40 xl:text-65 space-y-7"
           >
             <li
-              class="hover:text-green"
-              @mouseenter="lamps = [lampTypes.GOOD]"
+              class="hover:text-lamp-type-good"
+              @mouseenter="lamps = [LampTypes.GOOD.id]"
               @mouseleave="lamps = []"
             >
               I love my dog.
             </li>
             <li
-              class="hover:text-red"
-              @mouseenter="lamps = [lampTypes.BAD]"
+              class="hover:text-lamp-type-bad"
+              @mouseenter="lamps = [LampTypes.BAD.id]"
               @mouseleave="lamps = []"
             >
               Terrible service.
             </li>
             <li
-              class="hover:text-yellow"
-              @mouseenter="lamps = [lampTypes.NEUTRAL]"
+              class="hover:text-lamp-type-neutral"
+              @mouseenter="lamps = [LampTypes.NEUTRAL.id]"
               @mouseleave="lamps = []"
             >
               It's ok, I guess.
             </li>
             <li
-              class="hover:text-red"
-              @mouseenter="lamps = [lampTypes.BAD]"
+              class="hover:text-lamp-type-bad"
+              @mouseenter="lamps = [LampTypes.BAD.id]"
               @mouseleave="lamps = []"
             >
               Tomorrow is Monday.
             </li>
             <li
-              class="hover:text-green"
-              @mouseenter="lamps = [lampTypes.GOOD]"
+              class="hover:text-lamp-type-good"
+              @mouseenter="lamps = [LampTypes.GOOD.id]"
               @mouseleave="lamps = []"
             >
               I love to pay taxes.
@@ -142,10 +142,10 @@
               <Lamp
                 class="scale-25 lg:scale-100"
                 bg-color="#d4d4d4"
-                light-color="#007300"
+                :light-color="LampTypes.GOOD.color"
                 reflection-color="#FCFCF7"
                 :on="
-                  lamps.filter((lamptype) => lamptype === lampTypes.GOOD)
+                  lamps.filter((lamptype) => lamptype === LampTypes.GOOD.id)
                     .length > 0
                 "
               />
@@ -157,10 +157,10 @@
               <Lamp
                 class="scale-25 lg:scale-75"
                 bg-color="#d4d4d4"
-                light-color="#FEFFBE"
+                :light-color="LampTypes.NEUTRAL.color"
                 reflection-color="#FCFCF7"
                 :on="
-                  lamps.filter((lamptype) => lamptype === lampTypes.NEUTRAL)
+                  lamps.filter((lamptype) => lamptype === LampTypes.NEUTRAL.id)
                     .length > 0
                 "
               />
@@ -172,10 +172,10 @@
               <Lamp
                 class="scale-25 lg:scale-50"
                 bg-color="#d4d4d4"
-                light-color="#ff0000"
+                :light-color="LampTypes.BAD.color"
                 reflection-color="#FCFCF7"
                 :on="
-                  lamps.filter((lamptype) => lamptype === lampTypes.BAD)
+                  lamps.filter((lamptype) => lamptype === LampTypes.BAD.id)
                     .length > 0
                 "
               />
@@ -190,13 +190,8 @@
 <script>
 import Lamp from '@/components/Lamp/index.vue';
 import ProjectIntro from '@/components/Project/Intro/index.vue';
-import { sentimentAnalysis } from '~/utils/project';
-
-const lampTypes = {
-  GOOD: 'GOOD',
-  BAD: 'BAD',
-  NEUTRAL: 'NEUTRAL',
-};
+import { sentimentAnalysis } from '@/utils/project';
+import { LampTypes } from '@/config/lamp';
 
 export default {
   layout: 'project',
@@ -208,7 +203,7 @@ export default {
     return {
       project: sentimentAnalysis,
       lamps: [],
-      lampTypes,
+      LampTypes,
     };
   },
   created() {

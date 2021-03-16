@@ -10,7 +10,8 @@
 </template>
 
 <script>
-const headerHeight = 52;
+import { primaryCellColor } from '@/config/cell';
+import { headerHeight } from '@/components/TheHeader/height';
 export default {
   components: {
     'vue-p5': () => (process.client ? import('vue-p5') : null),
@@ -93,9 +94,12 @@ export default {
       let cellIndex = 1;
       for (let i = 0; i < this.particleSystem.length; i++) {
         this.particleSystem[i].motion();
-        if (!this.active || this.particleSystem[i].color === '#000') {
+        if (!this.active || this.particleSystem[i].color === primaryCellColor) {
           this.particleSystem[i].display();
-          if (this.active && this.particleSystem[i].color === '#000') {
+          if (
+            this.active &&
+            this.particleSystem[i].color === primaryCellColor
+          ) {
             sketch.noStroke();
             sketch.fill(255);
             sketch.textAlign(sketch.CENTER, sketch.CENTER);

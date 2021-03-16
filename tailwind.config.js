@@ -1,3 +1,5 @@
+const { colors } = require('./config/tailwindColors.config');
+
 module.exports = {
   future: {
     purgeLayersByDefault: true,
@@ -67,6 +69,9 @@ module.exports = {
       yellow: '#FEFFBE',
       red: '#ff0000',
       green: '#007300',
+      'lamp-type-good': colors.LAMP_TYPE_GOOD,
+      'lamp-type-bad': colors.LAMP_TYPE_BAD,
+      'lamp-type-neutral': colors.LAMP_TYPE_NEUTRAL,
     },
     extend: {
       scale: {

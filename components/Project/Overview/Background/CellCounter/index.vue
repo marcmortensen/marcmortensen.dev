@@ -2,7 +2,7 @@
   <client-only>
     <div
       v-observe-visibility="{
-        callback: visibilityChanged,
+        callback: () => {},
         intersection: {
           threshold: 0.01,
           rootMargin: '0px 0px 0px 0px', //0px 50% 0px 50% (top, right, bottom, left)
@@ -10,7 +10,7 @@
       }"
       class="bg-gray-light"
     >
-      <Cell :cells="cellsToShow" :active="active" class="w-full h-full" />
+      <P5Cells :cells="cellsToShow" :active="active" class="w-full h-full" />
     </div>
   </client-only>
 </template>
@@ -18,13 +18,14 @@
 <script>
 import Vue from 'vue';
 import { ObserveVisibility } from 'vue-observe-visibility';
-import Cell from '@/components/Cell/index.vue';
+import P5Cells from '@/components/P5/Cells/index.vue';
+import { xsScreenCells, lgScreenCells } from './cell';
 
 Vue.directive('observe-visibility', ObserveVisibility);
 
 export default {
   components: {
-    Cell,
+    P5Cells,
   },
   props: {
     active: {
@@ -34,123 +35,29 @@ export default {
   },
   data() {
     return {
-      cells: [
-        { size: 33, color: '#000' },
-        { size: 33, color: '#000' },
-        { size: 44, color: 'red' },
-        { size: 33, color: '#000' },
-        { size: 44, color: '#000' },
-        { size: 23, color: 'orange' },
-        { size: 33, color: '#000' },
-        { size: 44, color: 'green' },
-        { size: 23, color: 'orange' },
-        { size: 33, color: '#000' },
-        { size: 44, color: 'red' },
-        { size: 33, color: '#000' },
-        { size: 44, color: '#000' },
-        { size: 23, color: 'orange' },
-        { size: 33, color: '#000' },
-        { size: 44, color: 'green' },
-        { size: 23, color: 'orange' },
-        { size: 33, color: '#000' },
-        { size: 44, color: 'red' },
-        { size: 23, color: 'orange' },
-        { size: 33, color: '#000' },
-        { size: 44, color: 'red' },
-        { size: 23, color: 'orange' },
-        { size: 33, color: '#000' },
-        { size: 33, color: '#000' },
-        { size: 44, color: 'red' },
-        { size: 23, color: 'orange' },
-        { size: 33, color: '#000' },
-        { size: 44, color: '#000' },
-        { size: 23, color: 'orange' },
-        { size: 33, color: '#000' },
-        { size: 44, color: 'green' },
-        { size: 23, color: 'orange' },
-        { size: 33, color: '#000' },
-        { size: 44, color: 'red' },
-        { size: 33, color: '#000' },
-        { size: 44, color: '#000' },
-        { size: 23, color: 'orange' },
-        { size: 33, color: '#000' },
-        { size: 44, color: 'green' },
-        { size: 23, color: 'orange' },
-        { size: 33, color: '#000' },
-        { size: 44, color: 'red' },
-        { size: 33, color: '#000' },
-        { size: 44, color: '#000' },
-        { size: 23, color: 'orange' },
-        { size: 33, color: '#000' },
-        { size: 44, color: 'green' },
-        { size: 23, color: 'orange' },
-        { size: 33, color: '#000' },
-        { size: 19, color: 'red' },
-        { size: 23, color: 'orange' },
-        { size: 33, color: '#000' },
-        { size: 44, color: 'red' },
-        { size: 23, color: 'orange' },
-        { size: 33, color: '#000' },
-      ],
-      cellsSmallScreen: [
-        { size: 23, color: 'orange' },
-        { size: 33, color: '#000' },
-        { size: 44, color: 'red' },
-        { size: 23, color: 'orange' },
-        { size: 33, color: '#000' },
-        { size: 33, color: '#000' },
-        { size: 44, color: 'red' },
-        { size: 23, color: 'orange' },
-        { size: 33, color: '#000' },
-        { size: 44, color: '#000' },
-        { size: 23, color: 'orange' },
-        { size: 33, color: '#000' },
-        { size: 44, color: 'green' },
-        { size: 23, color: 'orange' },
-        { size: 33, color: '#000' },
-        { size: 44, color: 'red' },
-        { size: 33, color: '#000' },
-        { size: 44, color: '#000' },
-        { size: 23, color: 'orange' },
-        { size: 33, color: '#000' },
-        { size: 44, color: 'green' },
-        { size: 23, color: 'orange' },
-        { size: 33, color: '#000' },
-        { size: 44, color: 'red' },
-        { size: 33, color: '#000' },
-        { size: 44, color: '#000' },
-        { size: 23, color: 'orange' },
-        { size: 33, color: '#000' },
-        { size: 44, color: 'green' },
-        { size: 23, color: 'orange' },
-        { size: 33, color: '#000' },
-        { size: 19, color: 'red' },
-        { size: 23, color: 'orange' },
-      ],
+      xsScreenCells,
+      lgScreenCells,
     };
   },
   computed: {
     cellsToShow() {
       switch (this.$screen.breakpoint) {
         case 'xs':
-          return this.cellsSmallScreen;
+          return this.xsScreenCells;
         case 'sm':
-          return this.cellsSmallScreen;
+          return this.xsScreenCells;
         case 'md':
-          return this.cellsSmallScreen;
+          return this.xsScreenCells;
         case 'lg':
-          return this.cells;
+          return this.lgScreenCells;
         case 'xl':
-          return this.cells;
+          return this.lgScreenCells;
         case '2xl':
-          return this.cells;
+          return this.lgScreenCells;
         default:
-          return this.cells;
+          return this.lgScreenCells;
       }
     },
-  },
-  methods: {
-    visibilityChanged(isVisible, entry) {},
   },
 };
 </script>

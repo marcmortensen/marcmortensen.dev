@@ -8,7 +8,7 @@
             <Lamp
               class="scale-50 lg:scale-75"
               bg-color="#d4d4d4"
-              light-color="#FEFFBE"
+              :light-color="ligthColorNeutral"
               reflection-color="#FCFCF7"
               :on="active"
             />
@@ -20,7 +20,7 @@
             <Lamp
               class="scale-50 lg:scale-75"
               bg-color="#d4d4d4"
-              light-color="#ff0000"
+              :light-color="ligthColorBad"
               reflection-color="#FCFCF7"
               :on="active"
             />
@@ -32,7 +32,7 @@
             <Lamp
               class="scale-50 lg:scale-100"
               bg-color="#d4d4d4"
-              light-color="#007300"
+              :light-color="ligthColorGood"
               reflection-color="#FCFCF7"
               :on="active"
             />
@@ -45,6 +45,7 @@
 
 <script>
 import Lamp from '@/components/Lamp/index.vue';
+import { LampTypes } from '@/config/lamp';
 export default {
   components: {
     Lamp,
@@ -55,6 +56,13 @@ export default {
       mandatory: true,
       default: false,
     },
+  },
+  data() {
+    return {
+      ligthColorGood: LampTypes.GOOD.color,
+      ligthColorBad: LampTypes.BAD.color,
+      ligthColorNeutral: LampTypes.NEUTRAL.color,
+    };
   },
 };
 </script>
