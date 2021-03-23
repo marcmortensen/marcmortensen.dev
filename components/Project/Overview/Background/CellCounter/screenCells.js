@@ -6,7 +6,7 @@ const xsScreenCellBlueprints = [
   { numberOfCells: 10, type: CellTypes.A },
   { numberOfCells: 5, type: CellTypes.B },
   { numberOfCells: 3, type: CellTypes.C },
-  { numberOfCells: 15, type: CellTypes.primaryCell },
+  { numberOfCells: 15, type: CellTypes.D },
 ];
 
 export const xsScreenCells = shuffle(cellFactory(xsScreenCellBlueprints));
@@ -15,7 +15,6 @@ const lgScreenCellBlueprints = [
   { numberOfCells: 15, type: CellTypes.A },
   { numberOfCells: 9, type: CellTypes.B },
   { numberOfCells: 5, type: CellTypes.C },
-  { numberOfCells: 27, type: CellTypes.primaryCell },
+  { numberOfCells: 27, type: CellTypes.D },
 ];
-
 export const lgScreenCells = shuffle(cellFactory(lgScreenCellBlueprints));

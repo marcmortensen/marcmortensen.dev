@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import { colorShade } from '@/utils/colorShade/index.js';
+import { colorShade } from '@/utils/color/index';
 export default {
   props: {
     bgColor: {

@@ -10,16 +10,23 @@
       }"
       class="bg-gray-light"
     >
-      <P5Cells :cells="cellsToShow" :active="active" class="w-full h-full" />
+      <P5Cells
+        :cells="cellsToShow"
+        :cell-display-state="
+          active ? CellDisplayState.RESULT : CellDisplayState.START
+        "
+        class="w-full h-full"
+      />
     </div>
   </client-only>
 </template>
 
 <script>
 import Vue from 'vue';
+import { CellDisplayState } from '@/utils/p5/cell/index';
 import { ObserveVisibility } from 'vue-observe-visibility';
 import P5Cells from '@/components/P5/Cells/index.vue';
-import { xsScreenCells, lgScreenCells } from './cell';
+import { xsScreenCells, lgScreenCells } from './screenCells';
 
 Vue.directive('observe-visibility', ObserveVisibility);
 
@@ -35,6 +42,7 @@ export default {
   },
   data() {
     return {
+      CellDisplayState,
       xsScreenCells,
       lgScreenCells,
     };
