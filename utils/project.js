@@ -8,6 +8,8 @@ export const cellCounter = {
   index: 0,
   id: cellCounterId,
   title: 'Cell Counter',
+  shortDescription: 'Counting circles, how hard can it get?',
+  year: 2020,
   background: ProjectOverviewBackgroundCellCounter,
 };
 
@@ -15,6 +17,8 @@ export const sentimentAnalysis = {
   index: 1,
   id: 'sentiment-analysis',
   title: 'Sentiment Analysis',
+  shortDescription: 'Teaching machines about feelings!',
   background: ProjectOverviewBackgroundSentimentAnalysis,
+  year: 2019,
   technologies: [nodeJs, brainJs, typeScript, yarn],
 };

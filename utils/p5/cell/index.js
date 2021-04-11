@@ -10,13 +10,13 @@ import {
 } from './displayState/index';
 
 export const CellDisplayState = {
-  START: 'start',
-  RBG_GRAYSCALE: 'step1',
-  GAUSS_FILTER: 'step2',
-  DYNAMIC_THRESHOLD: 'step3',
-  ERODE: 'step4',
-  WATERSHED: 'step5',
-  RESULT: 'result',
+  START: 'Step 0',
+  RBG_GRAYSCALE: 'Step 1',
+  GAUSS_FILTER: 'Step 2',
+  DYNAMIC_THRESHOLD: 'Step 3',
+  ERODE: 'Step 4',
+  WATERSHED: 'Step 5',
+  RESULT: 'Step 6',
 };
 
 export class Cell extends P5ClassBuilder {

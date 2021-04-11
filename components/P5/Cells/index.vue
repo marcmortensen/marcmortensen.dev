@@ -62,7 +62,7 @@ export default {
       sketch.createCanvas(this.width, this.height);
     },
     draw(sketch) {
-      sketch.background(220);
+      sketch.background(255);
       for (let i = 0; i < this.particleSystem.length; i++) {
         this.particleSystem[i].motion();
         this.particleSystem[i].display(this.cellDisplayState);

@@ -8,12 +8,16 @@
           rootMargin: '0px 0px 0px 0px', //0px 50% 0px 50% (top, right, bottom, left)
         },
       }"
-      class="bg-gray-light"
+      class="bg-white"
     >
       <P5Cells
         :cells="cellsToShow"
         :cell-display-state="
-          active ? CellDisplayState.RESULT : CellDisplayState.START
+          cellDisplayState
+            ? cellDisplayState
+            : active
+            ? CellDisplayState.RESULT
+            : CellDisplayState.START
         "
         class="w-full h-full"
       />
@@ -38,6 +42,12 @@ export default {
     active: {
       type: Boolean,
       required: true,
+    },
+    cellDisplayState: {
+      type: String,
+      default: null,
+      validate: (displayState) =>
+        Object.values(CellDisplayState).includes(displayState),
     },
   },
   data() {

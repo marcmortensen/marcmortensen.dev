@@ -1,8 +1,8 @@
 <template>
   <div>
     <TheHeader class="z-40" />
-    <main class="min-h-screen w-full">
-      <div class="pt-13">
+    <main class="min-h-screen-height-header w-full">
+      <div class="">
         <Nuxt />
       </div>
     </main>

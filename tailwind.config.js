@@ -7,6 +7,10 @@ module.exports = {
   plugins: [],
   variants: {},
   theme: {
+    borderWidth: {
+      DEFAULT: '1px',
+      1: '1px',
+    },
     maxHeight: {
       0: '0',
       '1/4': '25%',
@@ -60,7 +64,7 @@ module.exports = {
     },
     colors: {
       transparent: 'transparent',
-      primary: '#F78D1E',
+      primary: '#79B6EF',
       white: '#ffffff',
       'gray-light': '#F9F9F9',
       'gray-dark': '#707070',

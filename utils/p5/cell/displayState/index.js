@@ -56,7 +56,7 @@ export const threshold = ({ sketch, xPosition, yPosition, size }) => {
     return;
   }
   sketch.noStroke();
-  sketch.fill('#ffffff');
+  sketch.fill('#000');
   sketch.circle(xPosition, yPosition, size - GAUSS_FILTER_ERODE);
 };
 
@@ -65,7 +65,7 @@ export const erode = ({ sketch, xPosition, yPosition, size }) => {
     return;
   }
   sketch.noStroke();
-  sketch.fill('#ffffff');
+  sketch.fill('#000');
   sketch.circle(xPosition, yPosition, size - GAUSS_FILTER_ERODE - ERODE_FILTER);
 };
 

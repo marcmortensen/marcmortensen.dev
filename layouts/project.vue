@@ -1,10 +1,8 @@
 <template>
-  <div ref="container" class="overflow-y-scroll h-screen w-screen">
-    <TheHeader class="z-40" />
-    <main class="min-h-screen w-full">
-      <div class="pt-13">
-        <Nuxt />
-      </div>
+  <div ref="container" class="overflow-y-scroll h-screen w-screen max-w-full">
+    <TheHeader :class="!isAtTop ? 'z-40' : 'hidden'" />
+    <main class="w-full min-h-screen relative">
+      <Nuxt :class="!isAtTop ? '-top-13 absolute' : 'top-0 absolute'" />
     </main>
   </div>
 </template>
@@ -105,8 +103,12 @@ export default {
       const isAtTop = this.getIsAtTop();
       if (isAtTop && !this.isAtTop) {
         this.isAtTop = true;
+        this.showHeader = false;
+        this.$store.commit('isAtTop/setIsAtTop', true);
       } else if (!isAtTop && this.isAtTop) {
         this.isAtTop = false;
+        this.$store.commit('isAtTop/setIsAtTop', false);
+        this.showHeader = true;
       }
       const isAtBottom = this.getIsAtBottom();
       if (isAtBottom && !this.isAtBottom) {
