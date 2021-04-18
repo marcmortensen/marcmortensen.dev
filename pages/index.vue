@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="min-h-screen-height-header bg-white relative">
+    <div class="min-h-screen-height-header bg-white relative mt-13">
       <div
         class="h-screen-height-header w-full sm:flex sm:justify-center sm:pb-20 sm:items-center"
       >

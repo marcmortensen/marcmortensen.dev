@@ -2,7 +2,9 @@
   <div ref="container" class="overflow-y-scroll h-screen w-screen max-w-full">
     <TheHeader :class="!isAtTop ? 'z-60' : 'hidden'" />
     <main class="w-full min-h-screen relative">
-      <Nuxt :class="!isAtTop ? '-top-13 absolute' : 'top-0 absolute'" />
+      <Nuxt
+        :class="getScrollPastFirstPage ? 'top-0 absolute' : '-top-13 absolute'"
+      />
     </main>
   </div>
 </template>
@@ -92,6 +94,11 @@ export default {
     getIsAtTop() {
       return this.$refs.container.scrollTop === 0;
     },
+    getScrollPastFirstPage() {
+      return (
+        this.$refs.container.scrollTop > this.$refs.container.clientHeight / 2
+      );
+    },
     getIsAtBottom() {
       return (
         Math.ceil(this.$refs.container.scrollTop) +
@@ -101,13 +108,17 @@ export default {
     },
     handleScroll() {
       const isAtTop = this.getIsAtTop();
+
+      this.$store.commit(
+        'hasScrolledPastFirstPage/setScroll',
+        this.getScrollPastFirstPage()
+      );
+
       if (isAtTop && !this.isAtTop) {
         this.isAtTop = true;
         this.showHeader = false;
-        this.$store.commit('isAtTop/setIsAtTop', true);
       } else if (!isAtTop && this.isAtTop) {
         this.isAtTop = false;
-        this.$store.commit('isAtTop/setIsAtTop', false);
         this.showHeader = true;
       }
       const isAtBottom = this.getIsAtBottom();

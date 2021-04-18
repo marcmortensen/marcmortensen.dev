@@ -4,23 +4,27 @@
       class="grid grid-cols-1 lg:grid-cols-2 grid-rows-2 lg:grid-rows-2 content-center min-h-screen relative overflow-x-hidden"
     >
       <div
-        :class="isAtTop ? ' z-20 h-3/4' : ' z-50 h-20 top-header bg-white'"
-        class="order-2 w-full lg:row-span-2 lg:h-full fixed lg:block lg:relative overflow-y-scroll overflow-x-hidden lg:overflow-y-hidden lg:top-0"
+        :class="
+          !hasScrolledPastFristPage
+            ? ' z-20 h-3/4'
+            : ' z-50 h-20 top-header bg-white'
+        "
+        class="order-2 w-full lg:row-span-2 fixed lg:h-screen overflow-y-scroll overflow-x-hidden lg:overflow-y-hidden lg:top-0 lg:right-0 lg:w-1/2"
       >
         <div class="order-1 lg:order-2 w-full h-20 lg:h-full lg:max-h-full">
           <div class="w-full h-full flex justify-end">
             <div class="w-full flex h-full justify-center">
               <div
                 class="lg:h-128 flex justify-center relative w-1/3"
-                :class="isAtTop ? 'h-36' : ' h-4'"
+                :class="!hasScrolledPastFristPage ? 'h-36' : ' h-4'"
               >
                 <div class="border-2 lg:border-8 h-full"></div>
                 <div
                   class="absolute top-full lg:-mt-12"
-                  :class="isAtTop ? '-mt-20' : ' -mt-32'"
+                  :class="!hasScrolledPastFristPage ? '-mt-20' : ' -mt-32'"
                 >
                   <Lamp
-                    :class="isAtTop ? 'scale-50' : 'scale-25'"
+                    :class="!hasScrolledPastFristPage ? 'scale-50' : 'scale-25'"
                     class="lg:scale-100"
                     bg-color="#fff"
                     :light-color="LampTypes.GOOD.color"
@@ -34,15 +38,15 @@
               </div>
               <div
                 class="lg:h-52 flex justify-center relative w-1/3"
-                :class="isAtTop ? 'h-72' : ' h-4'"
+                :class="!hasScrolledPastFristPage ? 'h-72' : ' h-4'"
               >
                 <div class="border-2 lg:border-8 h-full"></div>
                 <div
                   class="absolute top-full lg:-mt-12"
-                  :class="isAtTop ? '-mt-20' : ' -mt-32'"
+                  :class="!hasScrolledPastFristPage ? '-mt-20' : ' -mt-32'"
                 >
                   <Lamp
-                    :class="isAtTop ? 'scale-50' : 'scale-25'"
+                    :class="!hasScrolledPastFristPage ? 'scale-50' : 'scale-25'"
                     class="lg:scale-75"
                     bg-color="#fff"
                     :light-color="LampTypes.NEUTRAL.color"
@@ -57,15 +61,15 @@
               </div>
               <div
                 class="lg:h-80 flex justify-center relative w-1/3"
-                :class="isAtTop ? 'h-32' : ' h-4'"
+                :class="!hasScrolledPastFristPage ? 'h-32' : ' h-4'"
               >
                 <div class="border-2 h-full"></div>
                 <div
                   class="absolute top-full lg:-mt-24"
-                  :class="isAtTop ? '-mt-20' : ' -mt-32'"
+                  :class="!hasScrolledPastFristPage ? '-mt-20' : ' -mt-32'"
                 >
                   <Lamp
-                    :class="isAtTop ? 'scale-50' : 'scale-25'"
+                    :class="!hasScrolledPastFristPage ? 'scale-50' : 'scale-25'"
                     class="lg:scale-50"
                     bg-color="#fff"
                     :light-color="LampTypes.BAD.color"
@@ -262,20 +266,12 @@ export default {
     };
   },
   computed: {
-    isAtTop() {
-      return this.$store.getters['isAtTop/getIsAtTop'];
+    hasScrolledPastFristPage() {
+      return this.$store.getters['hasScrolledPastFirstPage/getScroll'];
     },
   },
   created() {
     this.$store.commit('lastProjectSeen/setIndex', sentimentAnalysis.index);
-  },
-  methods: {
-    onScroll({ target: { scrollTop, clientHeight, scrollHeight } }) {
-      console.log('hey');
-      if (scrollTop + clientHeight >= scrollHeight) {
-        this.isAtTop = false;
-      }
-    },
   },
 };
 </script>

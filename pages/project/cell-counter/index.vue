@@ -6,7 +6,7 @@
       <div
         class="bg-red order-2 w-full overflow-x-hidden lg:row-span-2 h-3/4 lg:h-full fixed lg:block lg:relative overflow-y-scroll lg:overflow-y-hidden lg:top-0"
         :class="
-          !showInPagePreview || (showInPagePreview && isAtTop)
+          !showInPagePreview || (showInPagePreview && !hasScrolledPastFristPage)
             ? 'z-40 top-0'
             : 'z-50 -top-1/2 mt-13'
         "
@@ -19,14 +19,20 @@
         />
         <div
           :class="
-            !showInPagePreview || (showInPagePreview && isAtTop) ? 'hidden' : ''
+            !showInPagePreview ||
+            (showInPagePreview && !hasScrolledPastFristPage)
+              ? 'hidden'
+              : ''
           "
           class="bg-primary w-10 h-10 bottom-0 absolute z-50 lg:hidden"
           @click="showInPagePreview = !showInPagePreview"
         ></div>
         <div
           :class="
-            !showInPagePreview || (showInPagePreview && isAtTop) ? 'hidden' : ''
+            !showInPagePreview ||
+            (showInPagePreview && !hasScrolledPastFristPage)
+              ? 'hidden'
+              : ''
           "
           class="w-30 h-1/3 bottom-0 right-0 vertical absolute z-50 text-center lg:hidden"
         >
@@ -245,8 +251,8 @@ export default {
         });
       },
     },
-    isAtTop() {
-      return this.$store.getters['isAtTop/getIsAtTop'];
+    hasScrolledPastFristPage() {
+      return this.$store.getters['hasScrolledPastFirstPage/getScroll'];
     },
   },
   methods: {
