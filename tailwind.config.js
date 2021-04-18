@@ -7,9 +7,27 @@ module.exports = {
   plugins: [],
   variants: {},
   theme: {
+    zIndex: {
+      0: 0,
+      10: 10,
+      20: 20,
+      30: 30,
+      40: 40,
+      50: 50,
+      60: 60,
+    },
     borderWidth: {
       DEFAULT: '1px',
       1: '1px',
+      2: '2px',
+      3: '3px',
+      4: '4px',
+      5: '5px',
+      6: '6px',
+      7: '7px',
+      8: '8px',
+      9: '9px',
+      10: '10px',
     },
     maxHeight: {
       0: '0',

@@ -7,9 +7,9 @@
         :key="index"
         class="flex items-center"
       >
-        <AppIcon class="w-10 h-10 mr-4 mx-2"
-          ><Component :is="technology.icon"
-        /></AppIcon>
+        <div class="w-10 h-10 mr-4 mx-2 text-primary">
+          <Component :is="technology.icon" />
+        </div>
       </li>
     </ul>
   </div>

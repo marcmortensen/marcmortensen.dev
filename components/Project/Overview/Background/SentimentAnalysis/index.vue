@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-gray">
+  <div class="bg-white">
     <div class="w-full max-h-3/4 h-full flex justify-end">
       <div class="w-full flex h-full justify-center">
         <div class="h-16 lg:h-32 w-full flex justify-center relative z-20">
@@ -7,7 +7,7 @@
           <div class="absolute top-full -mt-20 lg:-mt-12">
             <Lamp
               class="scale-50 lg:scale-75"
-              bg-color="#d4d4d4"
+              bg-color="#ffffff"
               :light-color="ligthColorNeutral"
               reflection-color="#FCFCF7"
               :on="active"
@@ -15,11 +15,11 @@
           </div>
         </div>
         <div class="h-64 w-full flex justify-center relative">
-          <div class="border-2 lg:border-4 h-full text-black z-0"></div>
+          <div class="border-2 lg:border-4 h-full text-black z-20"></div>
           <div class="absolute top-full -mt-20 lg:-mt-12">
             <Lamp
               class="scale-50 lg:scale-75"
-              bg-color="#d4d4d4"
+              bg-color="#ffffff"
               :light-color="ligthColorBad"
               reflection-color="#FCFCF7"
               :on="active"
@@ -31,7 +31,7 @@
           <div class="absolute top-full -mt-20 lg:-mt-12">
             <Lamp
               class="scale-50 lg:scale-100"
-              bg-color="#d4d4d4"
+              bg-color="#ffffff"
               :light-color="ligthColorGood"
               reflection-color="#FCFCF7"
               :on="active"

@@ -8,7 +8,7 @@
         :class="
           !showInPagePreview || (showInPagePreview && isAtTop)
             ? 'z-40 top-0'
-            : 'z-50 -top-1/2'
+            : 'z-50 -top-1/2 mt-13'
         "
       >
         <Component
@@ -35,7 +35,9 @@
           </p>
         </div>
       </div>
-      <div class="z-40 row-start-4 lg:row-span-2 lg:row-start-1 lg:col-start-1">
+      <div
+        class="z-40 lg:z-50 row-start-4 lg:row-span-2 lg:row-start-1 lg:col-start-1"
+      >
         <div
           class="relative flex flex-col justify-around lg:whitespace-nowrap h-screen items-center"
         >
@@ -108,7 +110,9 @@
                   "
                   @click="
                     currentCellDisplayState = CellDisplayState.RBG_GRAYSCALE;
-                    showInPagePreview = true;
+                    showInPagePreview = isSmallDeviceToShowPreview()
+                      ? !showInPagePreview
+                      : showInPagePreview;
                   "
                 >
                   Color to grayscale
@@ -243,6 +247,15 @@ export default {
     },
     isAtTop() {
       return this.$store.getters['isAtTop/getIsAtTop'];
+    },
+  },
+  methods: {
+    isSmallDeviceToShowPreview() {
+      return (
+        this.$screen.breakpoint === 'xs' ||
+        this.$screen.breakpoint === 'sm' ||
+        this.$screen.breakpoint === 'md'
+      );
     },
   },
 

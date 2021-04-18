@@ -11,6 +11,7 @@ export const cellCounter = {
   shortDescription: 'Counting circles, how hard can it get?',
   year: 2020,
   background: ProjectOverviewBackgroundCellCounter,
+  technologies: [],
 };
 
 export const sentimentAnalysis = {
@@ -18,7 +19,7 @@ export const sentimentAnalysis = {
   id: 'sentiment-analysis',
   title: 'Sentiment Analysis',
   shortDescription: 'Teaching machines about feelings!',
-  background: ProjectOverviewBackgroundSentimentAnalysis,
   year: 2019,
+  background: ProjectOverviewBackgroundSentimentAnalysis,
   technologies: [nodeJs, brainJs, typeScript, yarn],
 };

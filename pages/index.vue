@@ -43,6 +43,9 @@ export default {
       projects,
     };
   },
+  created() {
+    this.$store.commit('page/setName', '/');
+  },
   methods: {
     displayProject(project) {
       return {

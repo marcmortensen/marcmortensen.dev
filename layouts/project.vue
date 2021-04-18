@@ -1,6 +1,6 @@
 <template>
   <div ref="container" class="overflow-y-scroll h-screen w-screen max-w-full">
-    <TheHeader :class="!isAtTop ? 'z-40' : 'hidden'" />
+    <TheHeader :class="!isAtTop ? 'z-60' : 'hidden'" />
     <main class="w-full min-h-screen relative">
       <Nuxt :class="!isAtTop ? '-top-13 absolute' : 'top-0 absolute'" />
     </main>
