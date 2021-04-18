@@ -7,16 +7,20 @@
         :key="index"
         class="flex items-center"
       >
-        <div class="w-10 h-10 mr-4 mx-2 text-primary">
-          <Component :is="technology.icon" />
-        </div>
+        <AppIcon class="w-10 h-10 mr-4 mx-2" :icon-name="technology.name"
+          ><Component :is="technology.icon"
+        /></AppIcon>
       </li>
     </ul>
   </div>
 </template>
 
 <script>
+import AppIcon from '@/components/AppIcon/index.vue';
 export default {
+  components: {
+    AppIcon,
+  },
   props: {
     title: {
       type: String,

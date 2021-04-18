@@ -1,6 +1,6 @@
 <template>
   <nav
-    class="fixed w-full h-13 top-0 border-b bg-white flex justify-evenly items-center"
+    class="sticky w-full h-13 top-0 border-b bg-white flex justify-evenly items-center"
   >
     <NuxtLink
       to="/"
