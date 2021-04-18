@@ -7,9 +7,9 @@
     <span :class="props.right ? 'pb-2 ml-8' : ''">{{ props.displayText }}</span>
     <div class="bar w-1 h-10 absolute"></div>
 
-    <div
-      class="bar w-1 h-20 absolute -top-6 mt-2 ml-38 transform rotate-90"
-    ></div>
+    <div class="bar w-1 h-20 absolute -top-6 mt-2 ml-38 transform rotate-90">
+      <div class="w-3 h-3 absolute rounded-full -top-13 -ml-1 bg-black"></div>
+    </div>
   </div>
 </template>
 
@@ -41,5 +41,9 @@ export default {
 }
 .ml-38 {
   margin-left: 38px;
+}
+
+.-top-13 {
+  top: -11px;
 }
 </style>
