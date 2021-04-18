@@ -4,11 +4,13 @@
       class="grid grid-cols-1 lg:grid-cols-2 grid-rows-2 lg:grid-rows-2 content-center min-h-screen relative"
     >
       <div
-        class="bg-red order-2 w-full overflow-x-hidden lg:row-span-2 h-3/4 lg:h-full fixed lg:block lg:relative overflow-y-scroll lg:overflow-y-hidden lg:top-0"
+        class="order-2 w-full overflow-x-hidden lg:row-span-2 h-3/4 lg:h-full fixed lg:block lg:relative overflow-y-scroll lg:overflow-y-hidden lg:top-0"
         :class="
-          !showInPagePreview || (showInPagePreview && !hasScrolledPastFristPage)
+          !hasScrolledPastFristPage
             ? 'z-40 top-0'
-            : 'z-50 -top-1/2 mt-13'
+            : showInPagePreview
+            ? 'z-50 -top-1/2 mt-13'
+            : 'z-20 bg-white absolute'
         "
       >
         <Component
@@ -67,7 +69,7 @@
           />
           <AppScrollMark class="bottom-10 left-5 text-black" />
         </div>
-        <div class="bg-lamp-type-good">
+        <div>
           <div
             class="min-screen-height-header-extra lg:min-h-screen-height-header flex flex-col p-5 justify-end"
           >
@@ -194,7 +196,7 @@
               </ul>
             </div>
           </div>
-          <div class="text-20 space-y-2 px-5">
+          <div class="text-20 space-y-2 px-5 mb-56">
             <div class="text-35 my-5">Conclusions:</div>
             <p>
               I do really think developrs should be more involved in the
@@ -208,6 +210,16 @@
               to me if it could help anyone.
             </p>
           </div>
+
+          <AppScrollMark
+            display-text="NEXT PROJECT"
+            class="bottom-10 left-5 text-black"
+          />
+
+          <AppActionMark
+            display-text="RETURN"
+            class="bottom-10 left-1/3 text-black"
+          />
         </div>
       </div>
     </div>
@@ -217,6 +229,7 @@
 <script>
 import ProjectIntro from '@/components/Project/Intro/index.vue';
 import AppScrollMark from '@/components/AppScrollMark/index.vue';
+import AppActionMark from '@/components/AppActionMark/index.vue';
 import ProjectLandingPage from '@/components/Project/LandingPage/index.vue';
 import { cellCounter } from '@/utils/project';
 import P5Cells from '@/components/P5/Cells/index.vue';
@@ -230,6 +243,7 @@ export default {
     P5Cells,
     ProjectLandingPage,
     AppScrollMark,
+    AppActionMark,
   },
   data() {
     return {

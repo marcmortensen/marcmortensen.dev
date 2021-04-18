@@ -6,10 +6,10 @@
       <div
         :class="
           !hasScrolledPastFristPage
-            ? ' z-20 h-3/4'
-            : ' z-50 h-20 top-header bg-white'
+            ? ' z-20 h-3/4 absolute lg:fixed lg:mr-4'
+            : ' z-50 h-20 top-header bg-white lg:h-full fixed lg:mr-4'
         "
-        class="order-2 w-full lg:row-span-2 fixed lg:h-screen overflow-y-scroll overflow-x-hidden lg:overflow-y-hidden lg:top-0 lg:right-0 lg:w-1/2"
+        class="order-2 w-full lg:row-span-2 lg:h-screen overflow-y-scroll overflow-x-hidden lg:overflow-y-hidden lg:top-0 lg:right-0 lg:w-1/2"
       >
         <div class="order-1 lg:order-2 w-full h-20 lg:h-full lg:max-h-full">
           <div class="w-full h-full flex justify-end">
@@ -209,7 +209,7 @@
           <div
             class="min-h-screen flex justify-center align-middle text-center items-center"
           >
-            <div class="text-20 space-y-2 px-5">
+            <div class="text-20 space-y-2 px-5 mb-56">
               <div class="text-35 my-5">Conclusions:</div>
               <p>
                 The results were pretty awasome, for the most part it worked as
@@ -226,7 +226,7 @@
                 as positeve.
               </p>
             </div>
-            <div class="text-20 space-y-2 px-5">
+            <div class="text-20 space-y-2 px-5 mb-56">
               <div class="text-35 mb-5 mt-20">End note:</div>
               <p>
                 Sentiment analisis is not new, and it is still being used to
@@ -237,6 +237,15 @@
                 you get the hang of it!.
               </p>
             </div>
+            <AppScrollMark
+              display-text="NEXT PROJECT"
+              class="bottom-10 left-5 text-black"
+            />
+
+            <AppActionMark
+              display-text="RETURN"
+              class="bottom-10 left-1/3 text-black"
+            />
           </div>
         </div>
       </div>
@@ -247,6 +256,7 @@
 <script>
 import Lamp from '@/components/Lamp/index.vue';
 import AppScrollMark from '@/components/AppScrollMark';
+import AppActionMark from '@/components/AppActionMark/index.vue';
 import ProjectIntro from '@/components/Project/Intro/index.vue';
 import { sentimentAnalysis } from '@/utils/project';
 import { LampTypes } from '@/config/lamp';
@@ -257,6 +267,7 @@ export default {
     Lamp,
     AppScrollMark,
     ProjectIntro,
+    AppActionMark,
   },
   data() {
     return {

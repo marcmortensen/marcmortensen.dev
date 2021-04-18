@@ -96,7 +96,7 @@ export default {
     },
     getScrollPastFirstPage() {
       return (
-        this.$refs.container.scrollTop > this.$refs.container.clientHeight / 2
+        this.$refs.container.scrollTop > this.$refs.container.clientHeight / 3
       );
     },
     getIsAtBottom() {
@@ -108,7 +108,6 @@ export default {
     },
     handleScroll() {
       const isAtTop = this.getIsAtTop();
-
       this.$store.commit(
         'hasScrolledPastFirstPage/setScroll',
         this.getScrollPastFirstPage()

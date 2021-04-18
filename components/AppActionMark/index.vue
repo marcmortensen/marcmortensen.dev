@@ -4,12 +4,11 @@
     :class="data.staticClass || ''"
     v-bind="data.attrs"
   >
-    <span class="vertical" :class="props.downwards ? 'pb-2' : 'pt-12'">{{
-      props.displayText
-    }}</span>
+    <span :class="props.right ? 'pb-2 ml-8' : ''">{{ props.displayText }}</span>
+    <div class="bar w-1 h-10 absolute"></div>
+
     <div
-      :class="props.downwards ? '' : 'top-0'"
-      class="bar w-1 h-10 absolute"
+      class="bar w-1 h-20 absolute -top-6 mt-2 ml-38 transform rotate-90"
     ></div>
   </div>
 </template>
@@ -22,7 +21,7 @@ export default {
       mandatory: true,
       default: 'RETURN',
     },
-    downwards: {
+    right: {
       type: Boolean,
       mandatory: false,
       default: true,
@@ -39,5 +38,8 @@ export default {
   content: '';
   left: 9px;
   background-color: currentColor;
+}
+.ml-38 {
+  margin-left: 38px;
 }
 </style>
