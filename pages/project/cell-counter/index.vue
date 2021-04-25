@@ -4,6 +4,7 @@
       class="grid grid-cols-1 lg:grid-cols-2 grid-rows-2 lg:grid-rows-2 content-center min-h-screen relative"
     >
       <div
+        id="start-project"
         class="order-2 w-full overflow-x-hidden lg:row-span-2 h-3/4 lg:h-full fixed lg:block lg:relative overflow-y-scroll lg:overflow-y-hidden lg:top-0"
         :class="
           !hasScrolledPastFristPage
@@ -107,91 +108,89 @@
           >
             <div class="text-20 space-y-2 px-5">
               <ul
-                class="text-30 sm:text-40 md:text-50 lg:text-40 xl:text-65 space-y-7"
+                class="text-30 sm:text-40 md:text-50 lg:text-40 xl:text-50 space-y-7"
               >
-                <li>Step 1</li>
                 <li
+                  class="hover:text-primary cursor-pointer"
+                  :class="
+                    currentCellDisplayState === CellDisplayState.START
+                      ? 'text-primary'
+                      : ''
+                  "
+                  @click="changeCellDisplayState(CellDisplayState.START)"
+                >
+                  Start
+                </li>
+                <li
+                  class="hover:text-primary cursor-pointer"
                   :class="
                     currentCellDisplayState === CellDisplayState.RBG_GRAYSCALE
                       ? 'text-primary'
                       : ''
                   "
                   @click="
-                    currentCellDisplayState = CellDisplayState.RBG_GRAYSCALE;
-                    showInPagePreview = isSmallDeviceToShowPreview()
-                      ? !showInPagePreview
-                      : showInPagePreview;
+                    changeCellDisplayState(CellDisplayState.RBG_GRAYSCALE)
                   "
                 >
                   Color to grayscale
                 </li>
                 <li
-                  @mouseenter="
-                    currentCellDisplayState = CellDisplayState.GAUSS_FILTER
+                  class="hover:text-primary cursor-pointer"
+                  :class="
+                    currentCellDisplayState === CellDisplayState.GAUSS_FILTER
+                      ? 'text-primary'
+                      : ''
                   "
-                  @mouseleave="
-                    currentCellDisplayState = CellDisplayState.RBG_GRAYSCALE
-                  "
+                  @click="changeCellDisplayState(CellDisplayState.GAUSS_FILTER)"
                 >
                   Filter out noise
                 </li>
-              </ul>
-            </div>
-          </div>
-          <div
-            class="min-h-screen flex justify-center align-middle text-center items-center"
-          >
-            <div class="text-20 space-y-2 px-5">
-              <ul
-                class="text-30 sm:text-40 md:text-50 lg:text-40 xl:text-65 space-y-7"
-              >
-                <li>Step 2</li>
                 <li
-                  @mouseenter="
-                    currentCellDisplayState = CellDisplayState.DYNAMIC_THRESHOLD
+                  class="hover:text-primary cursor-pointer"
+                  :class="
+                    currentCellDisplayState ===
+                    CellDisplayState.DYNAMIC_THRESHOLD
+                      ? 'text-primary'
+                      : ''
                   "
-                  @mouseleave="
-                    currentCellDisplayState = CellDisplayState.GAUSS_FILTER
+                  @click="
+                    changeCellDisplayState(CellDisplayState.DYNAMIC_THRESHOLD)
                   "
                 >
                   Dynamic thresholder
                 </li>
-              </ul>
-            </div>
-          </div>
-          <div
-            class="min-h-screen flex justify-center align-middle text-center items-center"
-          >
-            <div class="text-20 space-y-2 px-5">
-              <ul
-                class="text-30 sm:text-40 md:text-50 lg:text-40 xl:text-65 space-y-7"
-              >
-                <li>Step 3</li>
                 <li
-                  @mouseenter="currentCellDisplayState = CellDisplayState.ERODE"
-                  @mouseleave="
-                    currentCellDisplayState = CellDisplayState.DYNAMIC_THRESHOLD
+                  class="hover:text-primary cursor-pointer"
+                  :class="
+                    currentCellDisplayState === CellDisplayState.ERODE
+                      ? 'text-primary'
+                      : ''
                   "
+                  @click="changeCellDisplayState(CellDisplayState.ERODE)"
                 >
                   Erode
                 </li>
                 <li
-                  @mouseenter="
-                    currentCellDisplayState = CellDisplayState.WATERSHED
+                  class="hover:text-primary cursor-pointer"
+                  :class="
+                    currentCellDisplayState === CellDisplayState.WATERSHED
+                      ? 'text-primary'
+                      : ''
                   "
-                  @mouseleave="currentCellDisplayState = CellDisplayState.ERODE"
+                  @click="changeCellDisplayState(CellDisplayState.WATERSHED)"
                 >
-                  Whatershead
+                  Watershed
                 </li>
                 <li
-                  @mouseenter="
-                    currentCellDisplayState = CellDisplayState.RESULT
+                  class="hover:text-primary cursor-pointer"
+                  :class="
+                    currentCellDisplayState === CellDisplayState.RESULT
+                      ? 'text-primary'
+                      : ''
                   "
-                  @mouseleave="
-                    currentCellDisplayState = CellDisplayState.RESULT
-                  "
+                  @click="changeCellDisplayState(CellDisplayState.RESULT)"
                 >
-                  Cell Count
+                  Result
                 </li>
               </ul>
             </div>
@@ -216,10 +215,12 @@
             class="bottom-10 left-5 text-black"
           />
 
-          <AppActionMark
-            display-text="RETURN"
-            class="bottom-10 left-1/3 text-black"
-          />
+          <AppLink to="/">
+            <AppActionMark
+              display-text="RETURN"
+              class="bottom-10 left-1/3 text-black"
+            />
+          </AppLink>
         </div>
       </div>
     </div>
@@ -230,6 +231,7 @@
 import ProjectIntro from '@/components/Project/Intro/index.vue';
 import AppScrollMark from '@/components/AppScrollMark/index.vue';
 import AppActionMark from '@/components/AppActionMark/index.vue';
+import AppLink from '@/components/AppLink/index.vue';
 import ProjectLandingPage from '@/components/Project/LandingPage/index.vue';
 import { cellCounter } from '@/utils/project';
 import P5Cells from '@/components/P5/Cells/index.vue';
@@ -244,6 +246,7 @@ export default {
     ProjectLandingPage,
     AppScrollMark,
     AppActionMark,
+    AppLink,
   },
   data() {
     return {
@@ -251,23 +254,17 @@ export default {
       lgScreenCells,
       CellDisplayState,
       showInPagePreview: false,
+      currentCellDisplayState: CellDisplayState.START,
     };
   },
   computed: {
-    currentCellDisplayState: {
-      get() {
-        return this.$route.query.step;
-      },
-      set(stepName) {
-        this.$router.push({
-          ...this.$route,
-          query: { step: stepName },
-        });
-      },
-    },
     hasScrolledPastFristPage() {
       return this.$store.getters['hasScrolledPastFirstPage/getScroll'];
     },
+  },
+
+  created() {
+    this.$store.commit('lastProjectSeen/setIndex', cellCounter.index);
   },
   methods: {
     isSmallDeviceToShowPreview() {
@@ -277,14 +274,12 @@ export default {
         this.$screen.breakpoint === 'md'
       );
     },
-  },
-
-  middleware({ store, route, redirect, next }) {
-    store.commit('lastProjectSeen/setIndex', cellCounter.index);
-    if (route.query.step) {
-      return;
-    }
-    redirect({ ...route, query: { step: CellDisplayState.START } });
+    changeCellDisplayState(cellDisplayState) {
+      this.currentCellDisplayState = cellDisplayState;
+      this.showInPagePreview = !this.showInPagePreview
+        ? this.isSmallDeviceToShowPreview()
+        : this.showInPagePreview;
+    },
   },
 };
 </script>

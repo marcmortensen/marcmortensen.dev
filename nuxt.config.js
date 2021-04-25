@@ -39,7 +39,7 @@ export default {
   },
 
   // Modules (https://go.nuxtjs.dev/config-modules)
-  modules: ['vue-screen/nuxt'],
+  modules: ['vue-screen/nuxt', 'vue-scrollto/nuxt'],
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {},

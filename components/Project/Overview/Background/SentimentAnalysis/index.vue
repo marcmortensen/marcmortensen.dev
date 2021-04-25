@@ -8,7 +8,7 @@
             <Lamp
               class="scale-50 lg:scale-75"
               bg-color="#ffffff"
-              :light-color="ligthColorNeutral"
+              :light-color="ligthColorGood"
               reflection-color="#FCFCF7"
               :on="active"
             />
@@ -20,7 +20,7 @@
             <Lamp
               class="scale-50 lg:scale-75"
               bg-color="#ffffff"
-              :light-color="ligthColorBad"
+              :light-color="ligthColorNeutral"
               reflection-color="#FCFCF7"
               :on="active"
             />
@@ -32,7 +32,7 @@
             <Lamp
               class="scale-50 lg:scale-100"
               bg-color="#ffffff"
-              :light-color="ligthColorGood"
+              :light-color="ligthColorBad"
               reflection-color="#FCFCF7"
               :on="active"
             />

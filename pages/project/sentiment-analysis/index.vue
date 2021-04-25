@@ -1,6 +1,7 @@
 <template>
   <div class="">
     <div
+      id="start-project"
       class="grid grid-cols-1 lg:grid-cols-2 grid-rows-2 lg:grid-rows-2 content-center min-h-screen relative overflow-x-hidden"
     >
       <div
@@ -131,19 +132,20 @@
                     @mouseenter="lamps = [LampTypes.GOOD.id]"
                     @mouseleave="lamps = []"
                     >good</span
-                  ><span>, </span
-                  ><span
-                    class="text-lamp-type-bad"
-                    @mouseenter="lamps = [LampTypes.BAD.id]"
-                    @mouseleave="lamps = []"
-                    >bad</span
                   ><span>, </span>
                   <span
                     class="text-lamp-type-neutral"
                     @mouseenter="lamps = [LampTypes.NEUTRAL.id]"
                     @mouseleave="lamps = []"
                     >neutral</span
-                  ><span>.</span>
+                  ><span>,</span>
+
+                  <span
+                    class="text-lamp-type-bad"
+                    @mouseenter="lamps = [LampTypes.BAD.id]"
+                    @mouseleave="lamps = []"
+                    >bad</span
+                  ><span>. </span>
                 </p>
                 <p>
                   I had to start somewhere so i decided to use tweets instead of
@@ -207,9 +209,9 @@
             </div>
           </div>
           <div
-            class="min-h-screen flex justify-center align-middle text-center items-center"
+            class="min-screen-height-header-extra lg:min-h-screen-height-header flex flex-col p-5 justify-end"
           >
-            <div class="text-20 space-y-2 px-5 mb-56">
+            <div class="text-20">
               <div class="text-35 my-5">Conclusions:</div>
               <p>
                 The results were pretty awasome, for the most part it worked as
@@ -226,7 +228,7 @@
                 as positeve.
               </p>
             </div>
-            <div class="text-20 space-y-2 px-5 mb-56">
+            <div class="text-20 mb-56">
               <div class="text-35 mb-5 mt-20">End note:</div>
               <p>
                 Sentiment analisis is not new, and it is still being used to
@@ -242,10 +244,12 @@
               class="bottom-10 left-5 text-black"
             />
 
-            <AppActionMark
-              display-text="RETURN"
-              class="bottom-10 left-1/3 text-black"
-            />
+            <AppLink to="/">
+              <AppActionMark
+                display-text="RETURN"
+                class="bottom-10 left-1/3 text-black"
+              />
+            </AppLink>
           </div>
         </div>
       </div>
@@ -257,6 +261,7 @@
 import Lamp from '@/components/Lamp/index.vue';
 import AppScrollMark from '@/components/AppScrollMark';
 import AppActionMark from '@/components/AppActionMark/index.vue';
+import AppLink from '@/components/AppLink/index.vue';
 import ProjectIntro from '@/components/Project/Intro/index.vue';
 import { sentimentAnalysis } from '@/utils/project';
 import { LampTypes } from '@/config/lamp';
@@ -268,6 +273,7 @@ export default {
     AppScrollMark,
     ProjectIntro,
     AppActionMark,
+    AppLink,
   },
   data() {
     return {

@@ -1,5 +1,9 @@
 <template>
-  <div ref="container" class="overflow-y-scroll h-screen w-screen max-w-full">
+  <div
+    id="project"
+    ref="container"
+    class="overflow-y-scroll h-screen w-screen max-w-full"
+  >
     <TheHeader :class="!isAtTop ? 'z-60' : 'hidden'" />
     <main class="w-full min-h-screen relative">
       <Nuxt
@@ -11,7 +15,10 @@
 
 <script>
 import TheHeader from '@/components/TheHeader/index.vue';
-import { projects } from '@/utils/projectsOverview';
+import {
+  projects,
+  scrollInProjectOptionsToTop,
+} from '@/utils/projectsOverview';
 export default {
   components: {
     TheHeader,
@@ -30,7 +37,7 @@ export default {
     currentProjectIndex() {
       return this.$store.getters['lastProjectSeen/getIndex'];
     },
-    previousProject() {
+    currentProject() {
       return projects[this.currentProjectIndex];
     },
     nextProject() {
@@ -84,10 +91,10 @@ export default {
       }
     },
     navigateToPreviousProject() {
-      if (this.previousProject) {
+      if (this.currentProject) {
         this.$router.push({
           name: 'project-overview',
-          query: { project: this.previousProject.id },
+          query: { project: this.currentProject.id },
         });
       }
     },
@@ -115,10 +122,8 @@ export default {
 
       if (isAtTop && !this.isAtTop) {
         this.isAtTop = true;
-        this.showHeader = false;
       } else if (!isAtTop && this.isAtTop) {
         this.isAtTop = false;
-        this.showHeader = true;
       }
       const isAtBottom = this.getIsAtBottom();
       if (isAtBottom && !this.isAtBottom) {
@@ -146,15 +151,24 @@ export default {
       } else {
         this.ongoingWheel = true;
       }
-      if (event.deltaY < 0 && this.previousProject && this.isAtTop) {
+      if (
+        !this.isAtTop &&
+        event.deltaY < 0 &&
+        this.$refs.container.scrollTop < this.$refs.container.clientHeight
+      ) {
+        this.$scrollTo('#start-project', 300, scrollInProjectOptionsToTop);
+        return;
+      }
+
+      if (event.deltaY < 0 && this.currentProject && this.isAtTop) {
         this.$router.push({
-          name: 'project-overview',
-          query: { project: this.previousProject.id },
+          name: 'index',
+          query: { section: this.currentProject.id },
         });
       } else if (event.deltaY > 0 && this.nextProject && this.isAtBottom) {
         this.$router.push({
-          name: 'project-overview',
-          query: { project: this.nextProject.id },
+          name: 'index',
+          query: { section: this.nextProject.id },
         });
       }
     },
