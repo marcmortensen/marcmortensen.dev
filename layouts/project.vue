@@ -4,7 +4,19 @@
     ref="container"
     class="overflow-y-scroll h-screen w-screen max-w-full"
   >
-    <TheHeader :class="!isAtTop ? 'z-60' : 'hidden'" />
+    <TheHeader
+      :class="!isAtTop ? 'z-70' : 'hidden'"
+      :show-menu="showMenu"
+      @toggle-menu="toggleMenu"
+    />
+    <Transition
+      enter-active-class="transition-opacity duration-150"
+      leave-active-class="transition-opacity duration-150"
+      enter-class="opacity-0"
+      leave-to-class="opacity-0"
+    >
+      <TheMenu v-if="showMenu" class="z-60" />
+    </Transition>
     <main class="w-full min-h-screen relative">
       <Nuxt
         :class="getScrollPastFirstPage ? 'top-0 absolute' : '-top-13 absolute'"
@@ -31,6 +43,7 @@ export default {
       wasAtBottom: undefined,
       ongoingWheel: false,
       ongoingWheelTimeout: undefined,
+      showMenu: false,
     };
   },
   computed: {
@@ -50,6 +63,14 @@ export default {
     },
     isFirstProject() {
       return this.currentProjectIndex === 0;
+    },
+  },
+  watch: {
+    $route() {
+      this.showMenu = false;
+    },
+    showMenu() {
+      this.showFloatingContactForm = false;
     },
   },
   mounted() {
@@ -171,6 +192,19 @@ export default {
           query: { section: this.nextProject.id },
         });
       }
+    },
+    toggleMenu() {
+      if (this.showMenu) {
+        this.closeMenu();
+      } else {
+        this.openMenu();
+      }
+    },
+    openMenu() {
+      this.showMenu = true;
+    },
+    closeMenu() {
+      this.showMenu = false;
     },
   },
 };

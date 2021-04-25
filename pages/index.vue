@@ -2,7 +2,7 @@
   <div ref="container">
     <div id="intro" class="min-h-screen-height-header bg-white relative">
       <div
-        class="h-screen-height-header w-full sm:flex sm:justify-center sm:pb-20 sm:items-center"
+        class="h-screen w-full sm:flex sm:justify-center sm:pb-20 sm:items-center"
       >
         <AppScrollMark class="bottom-10 left-5 text-white sm:text-black" />
         <div
@@ -21,7 +21,7 @@
       v-for="project in projects"
       :id="project.id"
       :key="project.id"
-      class="h-screen-height-header p-10"
+      class="h-screen lg:h-screen-height-header p-10"
     >
       <ProjectOverview
         class="w-full h-full"
@@ -34,7 +34,11 @@
 <script>
 import AppScrollMark from '@/components/AppScrollMark/index';
 import ProjectOverview from '@/components/Project/Overview/index.vue';
-import { projects, scrollToOptions } from '~/utils/projectsOverview';
+import {
+  projects,
+  indexMobileScroll,
+  indexDesktopScroll,
+} from '~/utils/projectsOverview';
 
 export default {
   components: {
@@ -97,7 +101,11 @@ export default {
     this.$refs.container.addEventListener('wheel', this.handleWheel, {
       passive: true,
     });
-    this.$scrollTo(`#${this.currentSectionId}`, 300, scrollToOptions);
+    this.$scrollTo(
+      `#${this.currentSectionId}`,
+      300,
+      this.isSmallDevice() ? indexMobileScroll : indexDesktopScroll
+    );
     setTimeout(() => {
       this.hasPurgedPreviousWheel = true;
     }, 100);
@@ -125,6 +133,13 @@ export default {
     redirect({ ...route, query: { section: initialSection } });
   },
   methods: {
+    isSmallDevice() {
+      return (
+        this.$screen.breakpoint === 'xs' ||
+        this.$screen.breakpoint === 'sm' ||
+        this.$screen.breakpoint === 'md'
+      );
+    },
     displayProject(project) {
       return {
         ...project,
@@ -162,7 +177,7 @@ export default {
         this.$scrollTo(
           `#${this.sections[this.sectionIndex].id}`,
           300,
-          scrollToOptions
+          this.isSmallDevice() ? indexMobileScroll : indexDesktopScroll
         );
       } else if (event.deltaY > 0 && this.hasPurgedPreviousWheel) {
         this.sectionIndex = this.sections.findIndex(
@@ -172,7 +187,7 @@ export default {
         this.$scrollTo(
           `#${this.sections[this.sectionIndex].id}`,
           300,
-          scrollToOptions
+          this.isSmallDevice() ? indexMobileScroll : indexDesktopScroll
         );
       }
     },

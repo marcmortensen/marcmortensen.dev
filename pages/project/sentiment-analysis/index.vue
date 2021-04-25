@@ -8,7 +8,7 @@
         :class="
           !hasScrolledPastFristPage
             ? ' z-20 h-3/4 absolute lg:fixed lg:mr-4'
-            : ' z-50 h-20 top-header bg-white lg:h-full fixed lg:mr-4'
+            : ' z-50 h-20 top-0 bg-white lg:h-full fixed lg:mr-4'
         "
         class="order-2 w-full lg:row-span-2 lg:h-screen overflow-y-scroll overflow-x-hidden lg:overflow-y-hidden lg:top-0 lg:right-0 lg:w-1/2"
       >

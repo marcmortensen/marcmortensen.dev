@@ -15,6 +15,7 @@ module.exports = {
       40: 40,
       50: 50,
       60: 60,
+      70: 70,
     },
     borderWidth: {
       DEFAULT: '1px',

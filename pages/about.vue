@@ -47,7 +47,7 @@
 <script>
 export default {
   created() {
-    this.$store.commit('page/setName', 'about-me');
+    this.$store.commit('page/setName', 'about');
   },
 };
 </script>

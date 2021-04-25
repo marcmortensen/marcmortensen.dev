@@ -1,13 +1,20 @@
 import { cellCounter, sentimentAnalysis } from '@/utils/project';
 
-export const scrollToOptions = {
+export const indexMobileScroll = {
   easing: 'ease-in',
   lazy: false,
-  offset: -51,
+  offset: 0,
   force: true,
   cancelable: false,
   x: false,
   y: true,
+};
+
+export const indexDesktopScroll = {
+  ...indexMobileScroll,
+  ...{
+    offset: -52,
+  },
 };
 
 export const scrollInProjectOptionsToTop = {

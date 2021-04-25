@@ -27,9 +27,15 @@
               ? 'hidden'
               : ''
           "
-          class="bg-primary w-10 h-10 bottom-0 absolute z-50 lg:hidden"
+          class="w-10 h-10 bottom-0 absolute z-50 lg:hidden cursor-pointer"
           @click="showInPagePreview = !showInPagePreview"
-        ></div>
+        >
+          <AppIcon
+            class="w-10 h-10 text-black bg-white p-2 rounded-full border"
+          >
+            <IconClose class="w-8 h-8" />
+          </AppIcon>
+        </div>
         <div
           :class="
             !showInPagePreview ||
@@ -231,6 +237,8 @@
 import ProjectIntro from '@/components/Project/Intro/index.vue';
 import AppScrollMark from '@/components/AppScrollMark/index.vue';
 import AppActionMark from '@/components/AppActionMark/index.vue';
+import AppIcon from '@/components/AppIcon/index.vue';
+import IconClose from '@/components/Icon/Close/index.vue';
 import AppLink from '@/components/AppLink/index.vue';
 import ProjectLandingPage from '@/components/Project/LandingPage/index.vue';
 import { cellCounter } from '@/utils/project';
@@ -247,6 +255,8 @@ export default {
     AppScrollMark,
     AppActionMark,
     AppLink,
+    AppIcon,
+    IconClose,
   },
   data() {
     return {
