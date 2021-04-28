@@ -13,7 +13,7 @@ export const indexMobileScroll = {
 export const indexDesktopScroll = {
   ...indexMobileScroll,
   ...{
-    offset: -52,
+    offset: -51,
   },
 };
 

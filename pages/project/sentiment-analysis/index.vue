@@ -19,7 +19,7 @@
                 class="lg:h-128 flex justify-center relative w-1/3"
                 :class="!hasScrolledPastFristPage ? 'h-36' : ' h-4'"
               >
-                <div class="border-2 lg:border-8 h-full"></div>
+                <div class="border lg:border-8 h-full"></div>
                 <div
                   class="absolute top-full lg:-mt-12"
                   :class="!hasScrolledPastFristPage ? '-mt-20' : ' -mt-32'"
@@ -41,7 +41,7 @@
                 class="lg:h-52 flex justify-center relative w-1/3"
                 :class="!hasScrolledPastFristPage ? 'h-72' : ' h-4'"
               >
-                <div class="border-2 lg:border-8 h-full"></div>
+                <div class="border lg:border-8 h-full"></div>
                 <div
                   class="absolute top-full lg:-mt-12"
                   :class="!hasScrolledPastFristPage ? '-mt-20' : ' -mt-32'"
@@ -64,7 +64,7 @@
                 class="lg:h-80 flex justify-center relative w-1/3"
                 :class="!hasScrolledPastFristPage ? 'h-32' : ' h-4'"
               >
-                <div class="border-2 h-full"></div>
+                <div class="border h-full"></div>
                 <div
                   class="absolute top-full lg:-mt-24"
                   :class="!hasScrolledPastFristPage ? '-mt-20' : ' -mt-32'"
