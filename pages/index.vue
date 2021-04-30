@@ -56,15 +56,26 @@ export default {
     };
   },
   computed: {
-    currentSectionId: {
+    displayCurrentSectionId: {
       get() {
-        return this.$route.query.section;
+        return this.currentSectionId === 'intro'
+          ? undefined
+          : this.currentSectionId;
       },
       set(sectionId) {
         this.$router.push({
           ...this.$route,
-          query: { section: sectionId },
+          query: { section: sectionId === 'intro' ? undefined : sectionId },
         });
+      },
+    },
+
+    currentSectionId: {
+      get() {
+        return this.$route.query.section || 'intro';
+      },
+      set(sectionId) {
+        this.displayCurrentSectionId = sectionId;
       },
     },
     previousSection() {
@@ -91,7 +102,7 @@ export default {
         const projectIndex = projects.findIndex(
           (_project) => _project.id === section
         );
-        if (projectIndex > 0) {
+        if (projectIndex >= 0) {
           this.$store.commit('lastProjectSeen/setIndex', projectIndex);
         }
       },
@@ -102,7 +113,7 @@ export default {
       passive: true,
     });
     this.$scrollTo(
-      `#${this.currentSectionId}`,
+      `#${this.sections[this.sectionIndex].id}`,
       300,
       this.isSmallDevice() ? indexMobileScroll : indexDesktopScroll
     );
@@ -114,23 +125,16 @@ export default {
     this.$refs.container.removeEventListener('wheel', this.handleWheel);
   },
   created() {
-    this.sectionIndex = this.sections.findIndex(
-      (section) => section.id === this.currentSectionId
-    );
-  },
-  middleware({ store, route, redirect, next }) {
-    store.commit('page/setName', '/');
-    if (route.query.section) {
-      return;
-    }
+    this.$store.commit('page/setName', '/');
 
-    const lastSeenProjectId =
-      store.getters['lastProjectSeen/getIndex'] !== -1
-        ? projects[store.getters['lastProjectSeen/getIndex']].id
-        : null;
-
-    const initialSection = lastSeenProjectId || 'intro';
-    redirect({ ...route, query: { section: initialSection } });
+    const lastProjectIndex = this.$store.getters['lastProjectSeen/getIndex'];
+    this.sectionIndex =
+      lastProjectIndex !== -1
+        ? this.sections.findIndex(
+            (section) => section.id === projects[lastProjectIndex].id
+          )
+        : 0;
+    this.currentSectionId = this.sections[this.sectionIndex].id;
   },
   methods: {
     isSmallDevice() {
