@@ -1,6 +1,8 @@
 <template>
-  <div class="lg:min-h-screen-height-header">
-    <div class="w-full grid grid-cols-1 lg:grid-cols-2 lg:gap-4 content-center">
+  <div class="lg:min-h-screen">
+    <div
+      class="w-full grid grid-cols-1 lg:grid-cols-2 lg:gap-4 content-center pt-13"
+    >
       <div
         class="row-start-2 row-span-2 lg:col-start-1 lg:row-start-1 flex items-center justify-center lg:w-full lg:h-screen-height-header lg:sticky lg:top-header"
       >
@@ -9,7 +11,7 @@
         >
           <img
             alt="Marc Mortensen"
-            src="~/assets/img/MarcMortensen.jpeg"
+            src="~/assets/img/MarcMortensen.jpg"
             class="object-contain w-full h-full"
           />
         </div>
