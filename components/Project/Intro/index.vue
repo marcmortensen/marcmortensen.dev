@@ -7,9 +7,11 @@
         :key="index"
         class="flex items-center"
       >
-        <AppIcon class="w-10 h-10 mr-4 mx-2" :icon-name="technology.name"
-          ><Component :is="technology.icon"
-        /></AppIcon>
+        <AppLink v-bind="technology">
+          <AppIcon class="w-10 h-10 mr-4 mx-2" :icon-name="technology.name">
+            <Component :is="technology.icon" />
+          </AppIcon>
+        </AppLink>
       </li>
     </ul>
   </div>
@@ -17,9 +19,11 @@
 
 <script>
 import AppIcon from '@/components/AppIcon/index.vue';
+import AppLink from '@/components/AppLink/index.vue';
 export default {
   components: {
     AppIcon,
+    AppLink,
   },
   props: {
     title: {

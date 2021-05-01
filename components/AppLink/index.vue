@@ -20,8 +20,10 @@ export default {
     component() {
       if (this.to) {
         return 'NuxtLink';
+      } else if (this.href) {
+        return 'a';
       }
-      return 'a';
+      return 'div';
     },
     props() {
       return {

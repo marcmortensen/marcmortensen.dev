@@ -5,22 +5,22 @@
     <nav class="overflow-y-auto">
       <ul class="px-12 py-16">
         <li
-          v-for="(section, index) in sections"
+          v-for="(route, index) in routes"
           :key="index"
           class="h-16 border-t border-gray-dark"
         >
           <AppLink
             class="transition-opacity duration-150 flex h-full w-full items-center hover:text-black opacity-60 hover:opacity-100"
-            v-bind="section"
+            v-bind="route"
             :class="
-              currentPage === section.route
+              currentPage === route.route
                 ? 'text-primary opacity-100'
                 : 'text-black'
             "
             ><div
               class="uppercase text-15 tracking-150 truncate text-center w-full"
             >
-              {{ section.label }}
+              {{ route.label }}
             </div></AppLink
           >
         </li>
@@ -31,22 +31,14 @@
 
 <script>
 import AppLink from '@/components/AppLink/index.vue';
+import { routes } from '@/utils/menu.js';
 export default {
   components: {
     AppLink,
   },
   data() {
     return {
-      sections: [
-        { to: '/', label: 'Marc Moretnsen', route: '/' },
-        { to: '/about', label: 'About', route: 'about' },
-        {
-          href: 'mailto:marcmortensen1994@gmail.com',
-          label: 'Contact me',
-          target: '_blank',
-          rel: 'noreferrer',
-        },
-      ],
+      routes,
     };
   },
   computed: {

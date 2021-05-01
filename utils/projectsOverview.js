@@ -28,6 +28,4 @@ export const scrollInProjectOptionsToTop = {
   y: true,
 };
 
-export const sliderOptions = {};
-
 export const projects = [cellCounter, sentimentAnalysis];

@@ -5,20 +5,19 @@
     <div class="flex-grow"></div>
     <nav class="hidden lg:block">
       <ul class="h-full flex items-center">
-        <li v-for="(section, index) in sections" :key="index" class="h-full">
+        <li v-for="(route, index) in routes" :key="index" class="h-full">
           <AppLink
-            v-bind="section"
+            v-bind="route"
             class="transition-opacity duration-150 flex h-full items-center px-4 hover:opacity-100 opacity-60"
-            :to="section.to"
             ><div
               :class="
-                currentPage === section.route
+                currentPage === route.route
                   ? 'text-primary opacity-100'
                   : 'text-black'
               "
               class="uppercase text-15 tracking-150 truncate hover:text-black focus:text-black"
             >
-              {{ section.label }}
+              {{ route.label }}
             </div></AppLink
           >
         </li>
@@ -55,6 +54,7 @@ import AppIcon from '@/components/AppIcon/index.vue';
 import AppLink from '@/components/AppLink/index.vue';
 import IconClose from '@/components/Icon/Close/index.vue';
 import IconMenu from '@/components/Icon/Menu/index.vue';
+import { routes } from '@/utils/menu.js';
 
 export default {
   components: {
@@ -71,16 +71,7 @@ export default {
   },
   data() {
     return {
-      sections: [
-        { to: '/', label: 'Marc Moretnsen', route: '/' },
-        { to: '/about', label: 'About', route: 'about' },
-        {
-          href: 'mailto:marcmortensen1994@gmail.com',
-          label: 'Contact Me',
-          target: '_blank',
-          rel: 'noreferrer',
-        },
-      ],
+      routes,
     };
   },
   computed: {

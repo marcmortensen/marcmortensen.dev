@@ -1,6 +1,15 @@
 import ProjectOverviewBackgroundCellCounter from '@/components/Project/Overview/Background/CellCounter';
 import ProjectOverviewBackgroundSentimentAnalysis from '@/components/Project/Overview/Background/SentimentAnalysis';
-import { brainJs, nodeJs, typeScript, yarn } from './technology';
+import {
+  brainJs,
+  nodeJs,
+  typeScript,
+  yarn,
+  fiji,
+  github,
+  jest,
+  npm,
+} from './technology';
 const cellCounterId = 'cell-counter';
 export const DEFAULT_PROJECT_ID = cellCounterId;
 
@@ -11,7 +20,18 @@ export const cellCounter = {
   shortDescription: 'Counting circles, how hard can it get?',
   year: 2020,
   background: ProjectOverviewBackgroundCellCounter,
-  technologies: [],
+  technologies: [
+    nodeJs,
+    npm,
+    fiji,
+    jest,
+    {
+      ...github,
+      href: 'https://github.com/marcmortensen/cellCounter',
+      target: '_blank',
+      rel: 'noreferrer',
+    },
+  ],
 };
 
 export const sentimentAnalysis = {
