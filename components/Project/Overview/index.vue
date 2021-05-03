@@ -31,7 +31,7 @@
             ><button
               class="bg-primary p-1 w-28 lg:w-32 lg:text-20 rounded-full"
             >
-              Read more
+              Project
             </button>
           </NuxtLink>
           <button
@@ -42,7 +42,7 @@
           </button>
         </div>
         <span
-          class="absolute lg:relative text-100 bottom-2 right-0 text-opacity-10 lg:text-opacity-100 lg:self-center lg:pb-10 text-black"
+          class="absolute lg:relative text-100 bottom-2 right-0 text-opacity-80 md:text-opacity-100 lg:self-center lg:pb-10 text-gray-dark md:text-black"
           >{{ `0${project.index + 1}` }}</span
         >
       </div>

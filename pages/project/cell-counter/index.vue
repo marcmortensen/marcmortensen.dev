@@ -65,7 +65,7 @@
             </p>
           </div>
           <span
-            class="absolute lg:relative text-100 lg:text-65 xl:text-100 bottom-2 right-0 text-opacity-10 lg:text-opacity-100 lg:self-center text-black lg:bg-primary lg:rounded-full lg:w-28 lg:h-28 xl:w-40 xl:h-40 text-center"
+            class="absolute lg:relative text-100 lg:text-65 xl:text-100 bottom-2 right-0 text-opacity-80 md:text-opacity-100 lg:self-center text-gray-dark md:text-black lg:text-white lg:bg-primary lg:rounded-full lg:w-28 lg:h-28 xl:w-40 xl:h-40 text-center"
             >{{ `0${project.index + 1}` }}</span
           >
 
@@ -240,7 +240,6 @@ import AppActionMark from '@/components/AppActionMark/index.vue';
 import AppIcon from '@/components/AppIcon/index.vue';
 import IconClose from '@/components/Icon/Close/index.vue';
 import AppLink from '@/components/AppLink/index.vue';
-import ProjectLandingPage from '@/components/Project/LandingPage/index.vue';
 import { cellCounter } from '@/utils/project';
 import P5Cells from '@/components/P5/Cells/index.vue';
 import { CellDisplayState } from '@/utils/p5/cell/index';
@@ -251,7 +250,6 @@ export default {
   components: {
     ProjectIntro,
     P5Cells,
-    ProjectLandingPage,
     AppScrollMark,
     AppActionMark,
     AppLink,
