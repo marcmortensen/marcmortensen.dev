@@ -7,11 +7,15 @@ export default {
     htmlAttrs: {
       lang: 'en',
     },
-    title: 'marcMortensen.dev',
+    title: 'Marc Mortensen',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: '' },
+      {
+        hid: 'description',
+        name: 'description',
+        content: 'My personal website',
+      },
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
   },
@@ -31,6 +35,8 @@ export default {
     '@nuxtjs/eslint-module',
     // https://go.nuxtjs.dev/tailwindcss
     '@nuxtjs/tailwindcss',
+    // https://github.com/geeogi/nuxt-responsive-loader
+    'nuxt-responsive-loader',
   ],
   screen: {
     xs: 0,

@@ -14,9 +14,9 @@
   "dependencies": {
     "core-js": "^3.6.5",
     "nuxt": "^2.14.6",
+    "nuxt-responsive-loader": "^2.0.1",
     "vue-screen": "^1.5.3",
-    "vue-scrollto": "^2.20.0",
-    "vue-slick-carousel": "^1.0.6"
+    "vue-scrollto": "^2.20.0"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config": "^3.1.0",

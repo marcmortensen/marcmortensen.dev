@@ -1,5 +1,5 @@
 export const state = () => ({
-  name: '/',
+  name: '',
   header: {
     imagePath: '',
     alt: '',

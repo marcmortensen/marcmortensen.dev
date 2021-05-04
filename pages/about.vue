@@ -11,7 +11,7 @@
         >
           <img
             alt="Marc Mortensen"
-            src="~/assets/img/MarcMortensen.jpg"
+            :srcset="require('~/assets/img/MarcMortensen.jpg').srcSet"
             class="object-contain w-full h-full"
           />
         </div>
@@ -50,13 +50,19 @@
 </template>
 
 <script>
-import { AppLink } from '@/components/AppLink/index.vue';
+import AppLink from '@/components/AppLink/index.vue';
 export default {
   components: {
     AppLink,
   },
   created() {
     this.$store.commit('page/setName', 'about');
+  },
+  head() {
+    return {
+      title: 'About me | Marc Mortensen',
+      description: 'Know more about what am I passionate about and my hobbies.',
+    };
   },
 };
 </script>

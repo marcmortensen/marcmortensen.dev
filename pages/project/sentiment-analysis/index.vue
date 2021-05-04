@@ -64,7 +64,7 @@
                 class="lg:h-80 flex justify-center relative w-1/3"
                 :class="!hasScrolledPastFristPage ? 'h-32' : ' h-4'"
               >
-                <div class="border h-full"></div>
+                <div class="border lg:border-2 h-full"></div>
                 <div
                   class="absolute top-full lg:-mt-24"
                   :class="!hasScrolledPastFristPage ? '-mt-20' : ' -mt-32'"
@@ -267,7 +267,6 @@ import { sentimentAnalysis } from '@/utils/project';
 import { LampTypes } from '@/config/lamp';
 
 export default {
-  layout: 'project',
   components: {
     Lamp,
     AppScrollMark,
@@ -290,5 +289,12 @@ export default {
   created() {
     this.$store.commit('lastProjectSeen/setIndex', sentimentAnalysis.index);
   },
+  head() {
+    return {
+      title: 'Sentiment Analysis | Marc Mortensen',
+      description: 'My attempt at making a machine comprehend sentences',
+    };
+  },
+  layout: 'project',
 };
 </script>

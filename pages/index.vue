@@ -11,8 +11,8 @@
           Marc Mortensen
         </div>
         <img
+          :srcset="require('~/assets/img/me_bridge.jpg').srcSet"
           alt="Marc Mortensen"
-          src="~/assets/img/me_bridge.jpg"
           class="object-fill w-full h-full rounded-none sm:rounded-full sm:h-128 sm:w-128 lg:h-3/4 lg:w-1/3 sm:object-cover"
         />
       </div>
@@ -195,6 +195,13 @@ export default {
         );
       }
     },
+  },
+  head() {
+    return {
+      title: 'Projects | Marc Mortensen',
+      description:
+        'A frontend developer, See my projects and know more about me.',
+    };
   },
 };
 </script>

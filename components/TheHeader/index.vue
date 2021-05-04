@@ -8,14 +8,14 @@
         <li v-for="(route, index) in routes" :key="index" class="h-full">
           <AppLink
             v-bind="route"
-            class="transition-opacity duration-150 flex h-full items-center px-4 hover:opacity-100 opacity-60"
+            class="transition-opacity duration-150 flex h-full items-center px-4 text-black"
             ><div
               :class="
                 currentPage === route.route
-                  ? 'text-primary opacity-100'
-                  : 'text-black'
+                  ? 'opacity-100 font-bold'
+                  : 'opacity-60'
               "
-              class="uppercase text-15 tracking-150 truncate hover:text-black focus:text-black"
+              class="uppercase text-15 tracking-150 truncate hover:text-black hover:opacity-100 focus:text-black"
             >
               {{ route.label }}
             </div></AppLink

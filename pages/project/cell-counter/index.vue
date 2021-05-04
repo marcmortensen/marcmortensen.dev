@@ -241,15 +241,12 @@ import AppIcon from '@/components/AppIcon/index.vue';
 import IconClose from '@/components/Icon/Close/index.vue';
 import AppLink from '@/components/AppLink/index.vue';
 import { cellCounter } from '@/utils/project';
-import P5Cells from '@/components/P5/Cells/index.vue';
 import { CellDisplayState } from '@/utils/p5/cell/index';
-import { lgScreenCells } from './screenCells';
 
 export default {
   layout: 'project',
   components: {
     ProjectIntro,
-    P5Cells,
     AppScrollMark,
     AppActionMark,
     AppLink,
@@ -259,7 +256,6 @@ export default {
   data() {
     return {
       project: cellCounter,
-      lgScreenCells,
       CellDisplayState,
       showInPagePreview: false,
       currentCellDisplayState: CellDisplayState.START,
@@ -288,6 +284,13 @@ export default {
         ? this.isSmallDeviceToShowPreview()
         : this.showInPagePreview;
     },
+  },
+  head() {
+    return {
+      title: 'Cell Counter | Marc Mortensen',
+      description:
+        'Creating a platform to let developers use ImageJ within Node.js',
+    };
   },
 };
 </script>
