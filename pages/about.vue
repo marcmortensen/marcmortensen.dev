@@ -30,8 +30,11 @@
             <p>
               A sotware developer interested in web development and Computer
               vision. Some of my work is open source and publicly available on
-              <a href="https://github.com/marcmortensen" target="_blank"
-                >GitHub</a
+              <AppLink
+                href="https://github.com/marcmortensen"
+                target="_blank"
+                rel="noreferrer"
+                >GitHub</AppLink
               >.
             </p>
             <p class="my-4">
@@ -47,7 +50,11 @@
 </template>
 
 <script>
+import { AppLink } from '@/components/AppLink/index.vue';
 export default {
+  components: {
+    AppLink,
+  },
   created() {
     this.$store.commit('page/setName', 'about');
   },
