@@ -37,7 +37,13 @@ export default {
     '@nuxtjs/tailwindcss',
     // https://github.com/geeogi/nuxt-responsive-loader
     'nuxt-responsive-loader',
+    // https://sitemap.nuxtjs.org/
+    '@nuxtjs/sitemap',
   ],
+  sitemap: {
+    hostname: 'https://marcmortensen.dev',
+  },
+
   screen: {
     xs: 0,
     sm: 640,
