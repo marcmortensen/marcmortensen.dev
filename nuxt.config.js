@@ -39,7 +39,13 @@ export default {
     'nuxt-responsive-loader',
     // https://sitemap.nuxtjs.org/
     '@nuxtjs/sitemap',
+    // https://github.com/nuxt-community/robots-module
+    '@nuxtjs/robots',
   ],
+  robots: {
+    Sitemap: 'https://marcmortensen.dev/sitemap.txt',
+  },
+
   sitemap: {
     hostname: 'https://marcmortensen.dev',
   },
