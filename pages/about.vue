@@ -28,20 +28,36 @@
         <div class="flex flex-col justify-center py-5 items-center lg:px-10">
           <div class="font-light text-18 px-2 sm:px-5 my-4 max-w-lg">
             <p>
-              A sotware developer interested in web development and Computer
+              A sotware developer passionate in web development and computer
               vision. Some of my work is open source and publicly available on
               <AppLink
-                href="https://github.com/marcmortensen"
+                :href="githubProfileUrl"
                 target="_blank"
                 rel="noreferrer"
-                >GitHub</AppLink
-              >.
+                class="hover:text-primary font-semibold"
+                >Github.</AppLink
+              >
             </p>
             <p class="my-4">
-              Outside of programming, i enjoy video games, memes and reading.
-              Currently located in Girona (Spain), feel free to drop me an email
-              at marcmortensen77[at]gmail[dot]com.
+              Outside of programming, I enjoy reading, sports, video games and
+              memes. Currently located in Girona (Spain).
             </p>
+          </div>
+          <p>You can find me at:</p>
+          <div class="flex">
+            <AppLink :href="`mailto:${email}`" target="_blank" rel="noreferrer"
+              ><AppIcon class="w-10 h-10 text-black p-2 hover:text-primary">
+                <IconMail /> </AppIcon
+            ></AppLink>
+            <AppLink :href="linkedinProfileUrl" target="_blank" rel="noreferrer"
+              ><AppIcon class="w-10 h-10 text-black p-2 hover:text-primary">
+                <IconLinkedin /> </AppIcon
+            ></AppLink>
+
+            <AppLink :href="githubProfileUrl" target="_blank" rel="noreferrer"
+              ><AppIcon class="w-10 h-10 text-black p-2 hover:text-primary">
+                <IconGithub /> </AppIcon
+            ></AppLink>
           </div>
         </div>
       </div>
@@ -51,9 +67,24 @@
 
 <script>
 import AppLink from '@/components/AppLink/index.vue';
+import AppIcon from '@/components/AppIcon/index.vue';
+import IconLinkedin from '@/components/Icon/Linkedin/index.vue';
+import IconGithub from '@/components/Icon/Github/index.vue';
+import IconMail from '@/components/Icon/Mail/index.vue';
 export default {
   components: {
     AppLink,
+    AppIcon,
+    IconLinkedin,
+    IconGithub,
+    IconMail,
+  },
+  data() {
+    return {
+      githubProfileUrl: process.env.githubProfileUrl,
+      email: process.env.email,
+      linkedinProfileUrl: process.env.linkedinProfileUrl,
+    };
   },
   created() {
     this.$store.commit('page/setName', 'about');

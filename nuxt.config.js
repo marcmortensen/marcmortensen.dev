@@ -20,6 +20,12 @@ export default {
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
   },
 
+  env: {
+    linkedinProfileUrl: 'https://www.linkedin.com/in/marcmortensen/',
+    githubProfileUrl: 'https://github.com/marcmortensen',
+    email: 'marcmortensen1994@gmail.com',
+  },
+
   // Global CSS (https://go.nuxtjs.dev/config-css)
   css: ['~/assets/fonts/quicksand.css', '~/assets/css/styles.css'],
 

@@ -71,7 +71,17 @@ export default {
   },
   data() {
     return {
-      routes,
+      routes: [
+        ...routes,
+        ...[
+          {
+            href: `mailto:${process.env.email}`,
+            label: 'Contact',
+            target: '_blank',
+            rel: 'noreferrer',
+          },
+        ],
+      ],
     };
   },
   computed: {
