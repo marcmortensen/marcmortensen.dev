@@ -8,7 +8,9 @@
     <div class="bar w-1 h-10 absolute"></div>
 
     <div class="bar w-1 h-20 absolute -top-6 mt-2 ml-38 transform rotate-90">
-      <div class="w-3 h-3 absolute rounded-full -top-13 -ml-1 bg-black"></div>
+      <div
+        class="w-3 h-3 absolute rounded-full -top-13 -ml-1 currentColorAsBackgound"
+      ></div>
     </div>
   </div>
 </template>
@@ -38,6 +40,9 @@ export default {
   content: '';
   left: 9px;
   background-color: currentColor;
+}
+.currentColorAsBackgound {
+  background-color: currentcolor;
 }
 .ml-38 {
   margin-left: 38px;

@@ -224,7 +224,7 @@
           <AppLink to="/">
             <AppActionMark
               display-text="RETURN"
-              class="bottom-10 left-1/3 text-black"
+              class="bottom-10 left-1/3 text-black hover:text-primary"
             />
           </AppLink>
         </div>

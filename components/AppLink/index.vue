@@ -1,5 +1,9 @@
 <template>
-  <component :is="component" v-bind="{ ...$attrs, ...props }">
+  <component
+    :is="component"
+    v-bind="{ ...$attrs, ...props }"
+    :class="component != 'div' ? 'hover:text-primary' : ''"
+  >
     <slot />
   </component>
 </template>
