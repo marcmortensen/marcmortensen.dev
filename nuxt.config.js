@@ -43,13 +43,20 @@ export default {
     '@nuxtjs/tailwindcss',
     // https://github.com/geeogi/nuxt-responsive-loader
     'nuxt-responsive-loader',
-    // https://sitemap.nuxtjs.org/
-    '@nuxtjs/sitemap',
     // https://github.com/nuxt-community/robots-module
     '@nuxtjs/robots',
   ],
+  modules: [
+    // https://pwa.nuxtjs.org/setup
+    '@nuxtjs/pwa',
+    // https://sitemap.nuxtjs.org/
+    '@nuxtjs/sitemap',
+    'vue-screen/nuxt',
+    'vue-scrollto/nuxt',
+  ],
+
   robots: {
-    Sitemap: 'https://marcmortensen.dev/sitemap.txt',
+    Sitemap: 'https://marcmortensen.dev/sitemap.xml',
   },
 
   sitemap: {
@@ -65,13 +72,11 @@ export default {
     '2xl': 1536,
   },
 
-  // Modules (https://go.nuxtjs.dev/config-modules)
-  modules: ['vue-screen/nuxt', 'vue-scrollto/nuxt'],
-
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {},
 
   tailwindcss: {
     jit: true,
+    viewer: false,
   },
 };
