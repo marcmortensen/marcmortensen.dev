@@ -28,14 +28,14 @@
         <div class="flex flex-col justify-center py-5 items-center lg:px-10">
           <div class="font-light text-18 px-2 sm:px-5 my-4 max-w-lg">
             <p>
-              A sotware developer passionate in web development and computer
+              A software developer passionate in web development and computer
               vision. Some of my work is open source and publicly available on
               <AppLink
                 :href="githubProfileUrl"
                 target="_blank"
                 rel="noreferrer"
                 class="hover:text-primary font-semibold"
-                >Github.</AppLink
+                >GitHub.</AppLink
               >
             </p>
             <p class="my-4">
@@ -43,7 +43,7 @@
               memes. Currently located in Girona (Spain).
             </p>
           </div>
-          <p>You can find me at:</p>
+          <p>Reach me:</p>
           <div class="flex">
             <AppLink :href="`mailto:${email}`" target="_blank" rel="noreferrer"
               ><AppIcon class="w-10 h-10 text-black p-2 hover:text-primary">

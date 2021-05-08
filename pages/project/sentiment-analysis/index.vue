@@ -19,7 +19,7 @@
                 class="lg:h-128 flex justify-center relative w-1/3"
                 :class="!hasScrolledPastFristPage ? 'h-36' : ' h-4'"
               >
-                <div class="border lg:border-8 h-full"></div>
+                <div class="border lg:border-8 h-full bg-black"></div>
                 <div
                   class="absolute top-full lg:-mt-12"
                   :class="!hasScrolledPastFristPage ? '-mt-20' : ' -mt-32'"
@@ -41,7 +41,7 @@
                 class="lg:h-52 flex justify-center relative w-1/3"
                 :class="!hasScrolledPastFristPage ? 'h-72' : ' h-4'"
               >
-                <div class="border lg:border-8 h-full"></div>
+                <div class="border lg:border-8 h-full bg-black"></div>
                 <div
                   class="absolute top-full lg:-mt-12"
                   :class="!hasScrolledPastFristPage ? '-mt-20' : ' -mt-32'"
@@ -64,7 +64,7 @@
                 class="lg:h-80 flex justify-center relative w-1/3"
                 :class="!hasScrolledPastFristPage ? 'h-32' : ' h-4'"
               >
-                <div class="border lg:border-2 h-full"></div>
+                <div class="border lg:border-2 h-full bg-black"></div>
                 <div
                   class="absolute top-full lg:-mt-24"
                   :class="!hasScrolledPastFristPage ? '-mt-20' : ' -mt-32'"
@@ -123,10 +123,12 @@
               />
               <div class="text-20 space-y-2">
                 <p>
-                  The aim of this project was to take a look at AI, because AI
-                  can be a lot of things I focused on something very unique and
-                  easy to understand. How can i make a program that understands
-                  a message and it's able to classify it into 3 categories:
+                  The aim of this project was to experience first hand all the
+                  hype with AI. Because AI can be very abstract and difficult to
+                  grasp, I wanted something somewhat easy to understand and easy
+                  to apply, so I chose sentiments analysis. How can I make a
+                  program that understands a message and it's able to classify
+                  it into these 3 categories:
                   <span
                     class="text-lamp-type-good"
                     @mouseenter="lamps = [LampTypes.GOOD.id]"
@@ -148,18 +150,17 @@
                   ><span>. </span>
                 </p>
                 <p>
-                  I had to start somewhere so i decided to use tweets instead of
-                  texts of variable size (this simplified the following steps).
-                  So after reading on the internet i saw that i needed to feed a
-                  lot of data into an AI and then the AI would simply make the
-                  connections needed to classify as best as posible other
-                  tweets. I tried creating my own dataset with tweets the only
-                  issue was that it was too tiresome and too slow for my taste.
-                  I wanted to go BIG, so after a couple of hours searching i
-                  found two public datasets of tweets already classied, yay!
-                  1.500.000 tweets, now we're talking!.
+                  I had to start somewhere, so I simplified the problem instead
+                  of texts of various sizes I would do tweets that are much more
+                  compact and follow a set of rules. After reading, I understood
+                  that they key of a good AI relies on a good set of data, so I
+                  started creating my own dataset with tweets after some minutes
+                  I figured that there should already some publicly available
+                  databases with tweets already classified. And yes, after some
+                  searching, I got 1.500.000 tweets classified. With these
+                  tweets I could start training my model and then testing it,
+                  here are some examples:
                 </p>
-                <p>After the model was trained, i began testing it:</p>
               </div>
             </div>
           </div>
@@ -214,29 +215,29 @@
             <div class="text-20">
               <div class="text-35 my-5">Conclusions:</div>
               <p>
-                The results were pretty awasome, for the most part it worked as
+                The results were pretty awesome, for the most part it worked as
                 expected, but there were some behaviours to iron out, for
-                example, I exclusevily rely on the neural network to do all the
-                work, I could really use a henchman (a.k.a antother algorithm)
-                to work alongside to find a solution using other methods such as
-                diccionariries or other neural networks.
+                example, I exclusively rely on the neural network to do all the
+                work, I could really use another algorithm to work alongside to
+                find a solution using other methods such as dictionaries or
+                other neural networks.
               </p>
               <p>
                 As for sentences, ironic or sarcastic are pretty much out of the
-                scope of this project it adds a whole level of complexity, but i
-                would lie if i don't smirk when "I love to pay taxes" is marked
-                as positeve.
+                scope of this project as it adds another whole level of
+                complexity, but I would lie if I don't smirk when "I love to pay
+                taxes" is marked as positive sentence.
               </p>
             </div>
             <div class="text-20 mb-56">
               <div class="text-35 mb-5 mt-20">End note:</div>
               <p>
-                Sentiment analisis is not new, and it is still being used to
+                Sentiment analysis is not new, and it is still being used to
                 gather data on product reviews or opinions on a topic, there is
-                a huge interest in getting this kind of information. On the WEB
-                there are tons of infromation on how to approach this problem, i
+                a huge interest in getting this kind of information. On the web
+                there are tons of information on how to approach this problem, I
                 would recommend don't get hasty and play with it, it's fun once
-                you get the hang of it!.
+                you get the hang of it!
               </p>
             </div>
             <AppScrollMark

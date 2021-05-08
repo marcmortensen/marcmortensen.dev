@@ -3,7 +3,7 @@
     <div class="w-full max-h-3/4 h-full flex justify-end">
       <div class="w-full flex h-full justify-center">
         <div class="h-16 lg:h-32 w-full flex justify-center relative z-20">
-          <div class="border lg:border-4 h-full text-black"></div>
+          <div class="border lg:border-4 h-full text-black bg-black"></div>
           <div class="absolute top-full -mt-20 lg:-mt-12">
             <Lamp
               class="scale-50 lg:scale-75"
@@ -15,7 +15,7 @@
           </div>
         </div>
         <div class="h-64 w-full flex justify-center relative">
-          <div class="border lg:border-4 h-full text-black z-20"></div>
+          <div class="border lg:border-4 h-full text-black z-20 bg-black"></div>
           <div class="absolute top-full -mt-20 lg:-mt-11">
             <Lamp
               class="scale-50 lg:scale-75"
@@ -27,7 +27,7 @@
           </div>
         </div>
         <div class="h-32 lg:h-128 w-full flex justify-center relative">
-          <div class="border lg:border-8 h-full text-black"></div>
+          <div class="border lg:border-8 h-full text-black bg-black"></div>
           <div class="absolute top-full -mt-20 lg:-mt-12">
             <Lamp
               class="scale-50 lg:scale-100"

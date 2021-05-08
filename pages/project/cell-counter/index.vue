@@ -85,26 +85,33 @@
                 :title="project.title"
                 :technologies="project.technologies"
               />
-              <div class="text-20 space-y-2">
+              <div class="text-20 space-y-4">
                 <p>
-                  This project was intended to help reserchers speed up
-                  repetitive tasks with regards to computer vision, the generic
-                  solution achived enables non developers to focus only on the
-                  steps needed and the wrapper itself handles the rest.
+                  This open source project is designed to help researchers
+                  automate computer vision tasks; it’s built to reduce as much
+                  groundwork as possible so they can focus on their tasks. To
+                  explain it simply Cell-Counter is a generic project that wraps
+                  computer vision utilities and lets you use them as you see fit
+                  in already existing algorithms or new ones, its free to use
+                  and easy to expand upon.
                 </p>
                 <p>
-                  cell-counter can be used to integrate computer vision into a
-                  workflow or to simply obtain results, the core is designed to
-                  be extensible, flexible and it's fully tested for better
-                  maintability.
+                  As for the specifics Cell-Counter is built on top of a very
+                  known library ImageJ. This library lacks some practical
+                  features such as apply an algorithm to multiple files, so the
+                  idea is using all the potential in ImageJ but still be
+                  flexible. Cell-Counter can be used to integrate computer
+                  vision into any workflow or to simply obtain local results,
+                  the core is designed to be extensible, flexible and it's fully
+                  tested for better maintainability.
                 </p>
                 <p>
-                  As for the specifics cell-counter is build on top of a very
-                  known library ImageJ (scientific community). This library
-                  lacks some practical features such as apply an algorithm to
-                  multiple files, so the idea is use all the potencial in ImageJ
-                  but still be flexible. To ilustrate how the cell-counter works
-                  I created an algorithm to count the cells of a given image.
+                  To illustrate how it can be used the first algorithm published
+                  was the Cell-Counter algorithm that lets you count cells given
+                  a folder and some configurations, the output of the execution
+                  is a CVS file with all the data of the cells on each image,
+                  and an output image. Up next you will see each one of the
+                  steps taken by the algorithm:
                 </p>
               </div>
             </div>
@@ -201,17 +208,16 @@
               </ul>
             </div>
           </div>
-          <div class="text-20 space-y-2 px-5 mb-56">
+          <div class="text-20 space-y-4 px-5 mb-56">
             <div class="text-35 my-5">Conclusions:</div>
             <p>
-              I do really think developrs should be more involved in the
-              research field, sadly reserach isn't known for huge budgets and
-              can't simply invest in developers as much as the companies
-              altought i think this could change in the following years. Simply
-              automating is the way otherwise we simply repeat and waste time.
+              I do really think developers should be more involved in the
+              research field, sadly research isn't known for huge budgets and
+              can't simply invest in developers as much as the companies. I
+              think automating is the way otherwise we simply waste time.
             </p>
             <p>
-              This porject was intended to help others, it would mean the world
+              This project was intended to help others, it would mean the world
               to me if it could help anyone.
             </p>
           </div>
