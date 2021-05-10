@@ -92,7 +92,18 @@ export default {
   head() {
     return {
       title: 'About me | Marc Mortensen',
-      description: 'Know more about what am I passionate about and my hobbies.',
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: 'Know more about what am I passionate about and my hobbies.',
+        },
+        {
+          hid: 'og:description',
+          name: 'og:description',
+          content: 'Know more about what am I passionate about and my hobbies.',
+        },
+      ],
     };
   },
 };

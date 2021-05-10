@@ -199,8 +199,20 @@ export default {
   head() {
     return {
       title: 'Projects | Marc Mortensen',
-      description:
-        'A frontend developer, See my projects and know more about me.',
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content:
+            'A frontend developer, See my projects and know more about me.',
+        },
+        {
+          hid: 'og:description',
+          name: 'og:description',
+          content:
+            'A frontend developer, See my projects and know more about me.',
+        },
+      ],
     };
   },
 };

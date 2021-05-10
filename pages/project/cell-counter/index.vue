@@ -294,8 +294,20 @@ export default {
   head() {
     return {
       title: 'Cell Counter | Marc Mortensen',
-      description:
-        'Creating a platform to let developers use ImageJ within Node.js',
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content:
+            'Creating a platform to let developers use ImageJ within Node.js',
+        },
+        {
+          hid: 'og:description',
+          name: 'og:description',
+          content:
+            'Creating a platform to let developers use ImageJ within Node.js',
+        },
+      ],
     };
   },
 };

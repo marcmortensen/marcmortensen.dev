@@ -293,7 +293,18 @@ export default {
   head() {
     return {
       title: 'Sentiment Analysis | Marc Mortensen',
-      description: 'My attempt at making a machine comprehend sentences',
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: 'My attempt at making a machine comprehend sentences',
+        },
+        {
+          hid: 'og:description',
+          name: 'og:description',
+          content: 'My attempt at making a machine comprehend sentences',
+        },
+      ],
     };
   },
   layout: 'project',
