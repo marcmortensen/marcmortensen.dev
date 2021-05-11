@@ -30,7 +30,7 @@ export default {
   css: ['~/assets/fonts/quicksand.css', '~/assets/css/styles.css'],
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
-  plugins: [],
+  plugins: ['@/plugins/vue-touch-events.js'],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
   components: true,
@@ -78,5 +78,13 @@ export default {
   tailwindcss: {
     jit: true,
     viewer: false,
+  },
+  pwa: {
+    meta: {
+      theme_color: '#ffffff',
+    },
+    manifest: {
+      background_color: '#ffffff',
+    },
   },
 };

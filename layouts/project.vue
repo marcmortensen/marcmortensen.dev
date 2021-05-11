@@ -2,6 +2,9 @@
   <div
     id="project"
     ref="container"
+    v-touch:swipe.bottom="onSwipeBottom"
+    v-touch:swipe.top="onSwipeTop"
+    v-touch:start="onTouchStart"
     class="overflow-y-scroll h-screen w-screen max-w-full"
   >
     <TheHeader
@@ -92,12 +95,14 @@ export default {
       this.wasAtBottom = this.getIsAtBottom();
     },
     onSwipeTop() {
+      console.log('SWIPE TOP');
       this.handleScroll();
       if (this.isAtBottom && this.wasAtBottom) {
         this.navigateToNextProject();
       }
     },
     onSwipeBottom() {
+      console.log('SWIPE BOTTOM');
       this.handleScroll();
       if (this.isAtTop && this.wasAtTop) {
         this.navigateToPreviousProject();
@@ -106,16 +111,16 @@ export default {
     navigateToNextProject() {
       if (this.nextProject) {
         this.$router.push({
-          name: 'project-overview',
-          query: { project: this.nextProject.id },
+          name: 'index',
+          query: { section: this.nextProject.id },
         });
       }
     },
     navigateToPreviousProject() {
       if (this.currentProject) {
         this.$router.push({
-          name: 'project-overview',
-          query: { project: this.currentProject.id },
+          name: 'index',
+          query: { section: this.currentProject.id },
         });
       }
     },
