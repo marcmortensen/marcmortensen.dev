@@ -95,14 +95,12 @@ export default {
       this.wasAtBottom = this.getIsAtBottom();
     },
     onSwipeTop() {
-      console.log('SWIPE TOP');
       this.handleScroll();
       if (this.isAtBottom && this.wasAtBottom) {
         this.navigateToNextProject();
       }
     },
     onSwipeBottom() {
-      console.log('SWIPE BOTTOM');
       this.handleScroll();
       if (this.isAtTop && this.wasAtTop) {
         this.navigateToPreviousProject();
