@@ -1,3 +1,5 @@
+import { nuxtCookieControlModuleSettings } from './config/nuxt-cookie-control';
+
 export default {
   // Target (https://go.nuxtjs.dev/config-target)
   target: 'static',
@@ -30,7 +32,10 @@ export default {
   css: ['~/assets/fonts/quicksand.css', '~/assets/css/styles.css'],
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
-  plugins: ['@/plugins/vue-touch-events.js'],
+  plugins: [
+    { src: '@/plugins/vue-touch-events.js', ssr: false },
+    { src: '@/plugins/gtm', ssr: false },
+  ],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
   components: true,
@@ -53,6 +58,8 @@ export default {
     '@nuxtjs/sitemap',
     'vue-screen/nuxt',
     'vue-scrollto/nuxt',
+    '@nuxtjs/gtm',
+    ['nuxt-cookie-control', nuxtCookieControlModuleSettings],
   ],
 
   robots: {
@@ -60,6 +67,7 @@ export default {
   },
 
   sitemap: {
+    gzip: true,
     hostname: 'https://marcmortensen.dev',
   },
 
@@ -79,12 +87,53 @@ export default {
     jit: true,
     viewer: false,
   },
+
+  publicRuntimeConfig: {
+    gtm: {
+      id: process.env.GOOGLE_TAG_MANAGER_ID,
+    },
+  },
+
   pwa: {
     meta: {
       theme_color: '#ffffff',
     },
     manifest: {
       background_color: '#ffffff',
+      name: 'Marc Moretnsen',
+      short_name: 'marcM.dev',
     },
+  },
+
+  gtm: {
+    debug: false,
+    pageTracking: true,
+    autoInit: false,
+  },
+
+  cookies: {
+    necessary: [
+      {
+        name: 'Default Cookies',
+        description: 'Used for cookie control.',
+        cookies: ['cookie_control_consent', 'cookie_control_enabled_cookies'],
+      },
+    ],
+    optional: [
+      {
+        name: 'Google Analitycs',
+        identifier: 'ga',
+        description:
+          'Used to see how users interact with the page and optimize the web accordinglly.',
+
+        initialState: true,
+        async: true,
+        cookies: ['_ga', '_gat', '_gid'],
+        accepted: () => {
+          window.$nuxt.$gtm.init(window.$nuxt.$config.gtm.id);
+        },
+        declined: () => {},
+      },
+    ],
   },
 };

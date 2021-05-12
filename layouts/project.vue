@@ -25,6 +25,9 @@
         :class="getScrollPastFirstPage ? 'top-0 absolute' : '-top-13 absolute'"
       />
     </main>
+    <client-only>
+      <CookieControl />
+    </client-only>
   </div>
 </template>
 

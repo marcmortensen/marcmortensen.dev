@@ -14,14 +14,20 @@
         <Nuxt />
       </div>
     </main>
+    <client-only>
+      <CookieControl />
+    </client-only>
+    <TheFooter />
   </div>
 </template>
 
 <script>
 import TheHeader from '@/components/TheHeader/index.vue';
+import TheFooter from '@/components/TheFooter/index.vue';
 export default {
   components: {
     TheHeader,
+    TheFooter,
   },
   data() {
     return {

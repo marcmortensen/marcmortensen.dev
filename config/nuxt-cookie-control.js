@@ -1,0 +1,51 @@
+const PRIMARY_COLOR = '#79B6EF';
+// https://www.npmjs.com/package/nuxt-cookie-control
+
+export const nuxtCookieControlModuleSettings = {
+  cssPolyfill: false,
+  controlButton: false,
+  colors: {
+    barTextColor: '#000',
+    modalOverlay: '#000',
+    barBackground: '#fff',
+    barButtonColor: '#fff',
+    modalTextColor: '#000',
+    modalBackground: '#fff',
+    modalOverlayOpacity: 0.8,
+    modalButtonColor: '#fff',
+    modalUnsavedColor: '#fff',
+    barButtonHoverColor: '#fff',
+    barButtonBackground: PRIMARY_COLOR,
+    modalButtonHoverColor: '#fff',
+    modalButtonBackground: PRIMARY_COLOR,
+    controlButtonIconColor: '#000',
+    controlButtonBackground: '#fff',
+    barButtonHoverBackground: PRIMARY_COLOR,
+    checkboxActiveBackground: PRIMARY_COLOR,
+    checkboxInactiveBackground: '#ddd',
+    modalButtonHoverBackground: PRIMARY_COLOR,
+    checkboxDisabledBackground: '#a7cef2',
+    controlButtonIconHoverColor: '#fff',
+    controlButtonHoverBackground: '#000',
+    checkboxActiveCircleBackground: '#fff',
+    checkboxInactiveCircleBackground: '#fff',
+    checkboxDisabledCircleBackground: '#fff',
+  },
+  // default texts
+  text: {
+    barTitle: 'Cookies',
+    barDescription:
+      'I use my own cookies and third-party cookies so that I can show you this website and better understand how you use it.',
+    acceptAll: 'Accept All',
+    declineAll: 'Decline All',
+    manageCookies: 'Manage cookies',
+    unsaved: 'You have unsaved settings',
+    close: 'Close',
+    save: 'Save',
+    necessary: 'Necessary cookies',
+    optional: 'Optional cookies',
+    functional: 'Functional cookies',
+    blockedIframe: 'To see this, please enable functional cookies',
+    here: 'here',
+  },
+};

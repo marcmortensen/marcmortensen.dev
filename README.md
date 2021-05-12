@@ -1,5 +1,7 @@
 # marcMortensen.dev
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/a9ce1034-7561-4281-80f7-a9deaba5962e/deploy-status)](https://app.netlify.com/sites/marcmortensen/deploys)
+
 ## Build Setup
 
 ```bash
