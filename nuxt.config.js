@@ -100,7 +100,7 @@ export default {
     },
     manifest: {
       background_color: '#ffffff',
-      name: 'Marc Moretnsen',
+      name: 'Marc Mortensen',
       short_name: 'marcM.dev',
     },
   },
