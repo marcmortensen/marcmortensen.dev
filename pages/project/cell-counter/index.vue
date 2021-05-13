@@ -68,12 +68,13 @@
             class="absolute lg:relative text-100 lg:text-65 xl:text-100 bottom-2 right-0 text-opacity-80 md:text-opacity-100 lg:self-center text-gray-dark md:text-black lg:text-white lg:bg-primary lg:rounded-full lg:w-28 lg:h-28 xl:w-40 xl:h-40 text-center"
             >{{ `0${project.index + 1}` }}</span
           >
-
-          <AppScrollMark
-            class="top-0 left-5 text-black z-40"
-            :downwards="false"
-            display-text="RETURN"
-          />
+          <AppLink to="/">
+            <AppScrollMark
+              class="top-0 left-5 text-black z-40 hover:text-primary"
+              :downwards="false"
+              display-text="RETURN"
+            />
+          </AppLink>
           <AppScrollMark class="bottom-10 left-5 text-black" />
         </div>
         <div>
@@ -124,86 +125,17 @@
                 class="text-30 sm:text-40 md:text-50 lg:text-40 xl:text-50 space-y-7"
               >
                 <li
+                  v-for="algorithmStep in algorithmSteps"
+                  :key="algorithmStep.step"
                   class="hover:text-primary cursor-pointer"
                   :class="
-                    currentCellDisplayState === CellDisplayState.START
+                    currentCellDisplayState === algorithmStep.step
                       ? 'text-primary'
                       : ''
                   "
-                  @click="changeCellDisplayState(CellDisplayState.START)"
+                  @click="changeCellDisplayState(algorithmStep.step)"
                 >
-                  Start
-                </li>
-                <li
-                  class="hover:text-primary cursor-pointer"
-                  :class="
-                    currentCellDisplayState === CellDisplayState.RBG_GRAYSCALE
-                      ? 'text-primary'
-                      : ''
-                  "
-                  @click="
-                    changeCellDisplayState(CellDisplayState.RBG_GRAYSCALE)
-                  "
-                >
-                  Color to grayscale
-                </li>
-                <li
-                  class="hover:text-primary cursor-pointer"
-                  :class="
-                    currentCellDisplayState === CellDisplayState.GAUSS_FILTER
-                      ? 'text-primary'
-                      : ''
-                  "
-                  @click="changeCellDisplayState(CellDisplayState.GAUSS_FILTER)"
-                >
-                  Filter out noise
-                </li>
-                <li
-                  class="hover:text-primary cursor-pointer"
-                  :class="
-                    currentCellDisplayState ===
-                    CellDisplayState.DYNAMIC_THRESHOLD
-                      ? 'text-primary'
-                      : ''
-                  "
-                  @click="
-                    changeCellDisplayState(CellDisplayState.DYNAMIC_THRESHOLD)
-                  "
-                >
-                  Dynamic thresholder
-                </li>
-                <li
-                  class="hover:text-primary cursor-pointer"
-                  :class="
-                    currentCellDisplayState === CellDisplayState.ERODE
-                      ? 'text-primary'
-                      : ''
-                  "
-                  @click="changeCellDisplayState(CellDisplayState.ERODE)"
-                >
-                  Erode
-                </li>
-                <li
-                  class="hover:text-primary cursor-pointer"
-                  :class="
-                    currentCellDisplayState === CellDisplayState.WATERSHED
-                      ? 'text-primary'
-                      : ''
-                  "
-                  @click="changeCellDisplayState(CellDisplayState.WATERSHED)"
-                >
-                  Watershed
-                </li>
-                <li
-                  class="hover:text-primary cursor-pointer"
-                  :class="
-                    currentCellDisplayState === CellDisplayState.RESULT
-                      ? 'text-primary'
-                      : ''
-                  "
-                  @click="changeCellDisplayState(CellDisplayState.RESULT)"
-                >
-                  Result
+                  {{ algorithmStep.label }}
                 </li>
               </ul>
             </div>
@@ -221,11 +153,12 @@
               to me if it could help anyone.
             </p>
           </div>
-
-          <AppScrollMark
-            display-text="NEXT PROJECT"
-            class="bottom-10 left-5 text-black"
-          />
+          <AppLink :to="{ path: '/', query: { section: nextProject.id } }">
+            <AppScrollMark
+              display-text="NEXT PROJECT"
+              class="bottom-10 left-5 text-black hover:text-primary"
+            />
+          </AppLink>
 
           <AppLink to="/">
             <AppActionMark
@@ -248,6 +181,7 @@ import IconClose from '@/components/Icon/Close/index.vue';
 import AppLink from '@/components/AppLink/index.vue';
 import { cellCounter } from '@/utils/project';
 import { CellDisplayState } from '@/utils/p5/cell/index';
+import { projects } from '@/utils/projectsOverview';
 
 export default {
   layout: 'project',
@@ -268,8 +202,30 @@ export default {
     };
   },
   computed: {
+    algorithmSteps() {
+      return [
+        { step: CellDisplayState.START, label: 'Start' },
+        { step: CellDisplayState.RBG_GRAYSCALE, label: 'Color to grayscale' },
+        { step: CellDisplayState.GAUSS_FILTER, label: 'Filter out noise' },
+        {
+          step: CellDisplayState.DYNAMIC_THRESHOLD,
+          label: 'Dynamic thresholder',
+        },
+        { step: CellDisplayState.ERODE, label: 'Erode' },
+        { step: CellDisplayState.WATERSHED, label: 'Watershed' },
+        { step: CellDisplayState.RESULT, label: 'Result' },
+      ];
+    },
     hasScrolledPastFristPage() {
       return this.$store.getters['hasScrolledPastFirstPage/getScroll'];
+    },
+    currentProjectIndex() {
+      return this.$store.getters['lastProjectSeen/getIndex'];
+    },
+    nextProject() {
+      return this.currentProjectIndex < projects.length - 1
+        ? projects[this.currentProjectIndex + 1]
+        : projects[0];
     },
   },
 

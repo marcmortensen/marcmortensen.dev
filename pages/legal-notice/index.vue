@@ -46,7 +46,7 @@
         </p>
       </div>
       <button
-        class="bg-primary p-3 lg:text-20 rounded-lg mb-10"
+        class="bg-primary p-3 text-20 rounded-lg mb-10"
         @click="$cookies.modal = true"
       >
         My cookie policy

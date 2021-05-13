@@ -42,7 +42,7 @@
           </button>
         </div>
         <span
-          class="absolute lg:relative text-100 bottom-2 right-0 text-opacity-80 md:text-opacity-100 lg:self-center lg:pb-10 text-gray-dark md:text-black"
+          class="absolute lg:relative text-100 bottom-2 right-0 text-opacity-10 md:text-opacity-100 lg:self-center lg:pb-10 text-black"
           >{{ `0${project.index + 1}` }}</span
         >
       </div>

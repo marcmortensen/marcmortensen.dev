@@ -16,7 +16,7 @@
           <div class="w-full h-full flex justify-end">
             <div class="w-full flex h-full justify-center">
               <div
-                class="lg:h-128 flex justify-center relative w-1/3"
+                class="lg:h-128 flex justify-center relative w-1/3 z-10"
                 :class="!hasScrolledPastFristPage ? 'h-36' : ' h-4'"
               >
                 <div class="border lg:border-8 h-full bg-black"></div>
@@ -86,14 +86,16 @@
           </div>
         </div>
       </div>
-      <AppScrollMark
-        class="top-0 left-5 text-black z-50"
-        :downwards="false"
-        display-text="RETURN"
-      />
       <div
         class="z-30 lg:z-50 row-start-4 lg:row-span-2 lg:row-start-1 lg:col-start-1"
       >
+        <AppLink to="/" class="bg-red">
+          <AppScrollMark
+            class="z-50 text-black hover:text-primary top-0 left-5"
+            :downwards="false"
+            display-text="RETURN"
+          />
+        </AppLink>
         <div
           class="relative flex flex-col justify-around lg:whitespace-nowrap h-screen items-center"
         >
@@ -240,10 +242,12 @@
                 you get the hang of it!
               </p>
             </div>
-            <AppScrollMark
-              display-text="NEXT PROJECT"
-              class="bottom-10 left-5 text-black"
-            />
+            <AppLink :to="{ path: '/', query: { section: nextProject.id } }">
+              <AppScrollMark
+                display-text="NEXT PROJECT"
+                class="bottom-10 left-5 text-black hover:text-primary"
+              />
+            </AppLink>
 
             <AppLink to="/">
               <AppActionMark
@@ -266,6 +270,7 @@ import AppLink from '@/components/AppLink/index.vue';
 import ProjectIntro from '@/components/Project/Intro/index.vue';
 import { sentimentAnalysis } from '@/utils/project';
 import { LampTypes } from '@/config/lamp';
+import { projects } from '@/utils/projectsOverview';
 
 export default {
   components: {
@@ -285,6 +290,14 @@ export default {
   computed: {
     hasScrolledPastFristPage() {
       return this.$store.getters['hasScrolledPastFirstPage/getScroll'];
+    },
+    currentProjectIndex() {
+      return this.$store.getters['lastProjectSeen/getIndex'];
+    },
+    nextProject() {
+      return this.currentProjectIndex < projects.length - 1
+        ? projects[this.currentProjectIndex + 1]
+        : projects[0];
     },
   },
   created() {
