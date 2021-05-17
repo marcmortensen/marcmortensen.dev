@@ -38,7 +38,7 @@ export default {
   },
   data() {
     return {
-      githubProject: `${process.env.githubProfileUrl} /marcmortensen.dev`,
+      githubProject: `${process.env.githubProfileUrl}/marcmortensen.dev`,
     };
   },
   computed: {
