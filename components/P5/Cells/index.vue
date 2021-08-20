@@ -1,5 +1,5 @@
 <template>
-  <div ref="containerxxxxx">
+  <div ref="cellFrame">
     <vue-p5
       class="flex justify-center"
       :additional-events="['windowresized']"
@@ -42,10 +42,10 @@ export default {
   },
   computed: {
     width() {
-      return this.$refs.containerxxxxx.clientWidth;
+      return this.$refs.cellFrame.clientWidth;
     },
     height() {
-      return this.$refs.containerxxxxx.clientHeight;
+      return this.$refs.cellFrame.clientHeight;
     },
   },
   methods: {

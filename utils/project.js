@@ -1,5 +1,7 @@
 import ProjectOverviewBackgroundCellCounter from '@/components/Project/Overview/Background/CellCounter';
 import ProjectOverviewBackgroundSentimentAnalysis from '@/components/Project/Overview/Background/SentimentAnalysis';
+import ProjectOverviewBackgroundSLAM from '@/components/Project/Overview/Background/SLAM';
+
 import {
   brainJs,
   nodeJs,
@@ -42,4 +44,26 @@ export const sentimentAnalysis = {
   year: 2019,
   background: ProjectOverviewBackgroundSentimentAnalysis,
   technologies: [nodeJs, brainJs, typeScript, yarn],
+};
+
+// TODO: ADD OPENCV AS TECHNOLOGY
+
+export const slam = {
+  index: 2,
+  id: 'mono-slam',
+  title: 'S.L.A.M',
+  shortDescription: '3D is better than 2D',
+  year: 2021,
+  background: ProjectOverviewBackgroundSLAM,
+  technologies: [
+    nodeJs,
+    typeScript,
+    yarn,
+    {
+      ...github,
+      href: 'https://github.com/marcmortensen/node-slam',
+      target: '_blank',
+      rel: 'noreferrer',
+    },
+  ],
 };

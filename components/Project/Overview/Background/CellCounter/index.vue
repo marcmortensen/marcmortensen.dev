@@ -2,7 +2,7 @@
   <client-only>
     <div
       v-observe-visibility="{
-        callback: () => {},
+        callback: visibilityChanged,
         intersection: {
           threshold: 0.01,
           rootMargin: '0px 0px 0px 0px', //0px 50% 0px 50% (top, right, bottom, left)
@@ -11,6 +11,7 @@
       class="bg-white"
     >
       <P5Cells
+        v-if="isVisible"
         :cells="cellsToShow"
         :cell-display-state="
           cellDisplayState
@@ -55,6 +56,7 @@ export default {
       CellDisplayState,
       xsScreenCells,
       lgScreenCells,
+      isVisible: false,
     };
   },
   computed: {
@@ -75,6 +77,11 @@ export default {
         default:
           return this.lgScreenCells;
       }
+    },
+  },
+  methods: {
+    visibilityChanged(isVisible, entry) {
+      this.isVisible = isVisible;
     },
   },
 };

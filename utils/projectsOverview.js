@@ -1,4 +1,4 @@
-import { cellCounter, sentimentAnalysis } from '@/utils/project';
+import { cellCounter, sentimentAnalysis, slam } from '@/utils/project';
 
 export const indexMobileScroll = {
   easing: 'ease-in',
@@ -28,4 +28,4 @@ export const scrollInProjectOptionsToTop = {
   y: true,
 };
 
-export const projects = [cellCounter, sentimentAnalysis];
+export const projects = [cellCounter, sentimentAnalysis, slam];
