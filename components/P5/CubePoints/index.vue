@@ -56,7 +56,7 @@ export default {
   methods: {
     setup(sketch) {
       sketch.createCanvas(this.width, this.height, sketch.WEBGL);
-      sketch.background(0);
+      sketch.background(255);
       const camera = sketch.createCamera();
       this.cube = new CubeCloudPoints(
         sketch,
