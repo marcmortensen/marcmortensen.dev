@@ -8,9 +8,9 @@ import {
 
 export const CubeCloudPointsState = {
   START: 'Step 0',
-  FEATURE_EXTRACTION: 'Step 2',
-  FEATURE_MATCHING: 'Step 3',
-  GET_3D_COORDS_FROM_POSE_MATRIX: 'Step 4',
+  FEATURE_EXTRACTION: 'Step 1',
+  FEATURE_MATCHING: 'Step 2',
+  GET_3D_COORDS_FROM_POSE_MATRIX: 'Step 3',
 };
 
 export class CubeCloudPoints extends P5ClassBuilder {

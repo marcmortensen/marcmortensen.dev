@@ -12,7 +12,7 @@
     >
       <P5CubePoints
         v-if="isVisible"
-        :num-spheres="50"
+        :num-spheres="25"
         :cube-display-state="
           displayState
             ? displayState
