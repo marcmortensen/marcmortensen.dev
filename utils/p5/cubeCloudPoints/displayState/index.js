@@ -1,6 +1,8 @@
 const SPEED_SLOW = 0.005;
 const SPEED_NORMAL = 0.01;
 
+const HIDE_FEATURE_FACTOR = 4;
+
 const cameraMovement = (sketch, camera) => {
   camera.lookAt(100, 0, 0);
   camera.setPosition(sketch.sin(sketch.frameCount / 60) * 100, 500, 100);
@@ -41,15 +43,17 @@ export const featureExtraction = ({ sketch, camera, xyz, size }) => {
 export const featureMatching = ({ sketch, camera, xyz, size }) => {
   cameraMovement(sketch, camera);
 
-  for (const point of xyz) {
-    sketch.push();
-    sketch.translate(point.x, point.y, point.z);
+  for (const [i, point] of xyz.entries()) {
+    if (i % HIDE_FEATURE_FACTOR !== 0) {
+      sketch.push();
+      sketch.translate(point.x, point.y, point.z);
 
-    sketch.fill(sketch.color(255, 204, 0));
-    sketch.noStroke();
-    sketch.stroke('red');
-    sketch.sphere(size / 50, 8);
-    sketch.pop();
+      sketch.fill(sketch.color(255, 204, 0));
+      sketch.noStroke();
+      sketch.stroke('red');
+      sketch.sphere(size / 50, 8);
+      sketch.pop();
+    }
   }
 };
 
@@ -80,10 +84,12 @@ export const getPointsCoordsIn3D = ({ sketch, xyz, size, camera }) => {
   // right bottom
   sketch.line(size, size, -size, size, size, size);
 
-  for (const point of xyz) {
-    sketch.push();
-    sketch.translate(point.x, point.y, point.z);
-    sketch.sphere(size / 50, 8);
-    sketch.pop();
+  for (const [i, point] of xyz.entries()) {
+    if (i % HIDE_FEATURE_FACTOR !== 0) {
+      sketch.push();
+      sketch.translate(point.x, point.y, point.z);
+      sketch.sphere(size / 50, 8);
+      sketch.pop();
+    }
   }
 };

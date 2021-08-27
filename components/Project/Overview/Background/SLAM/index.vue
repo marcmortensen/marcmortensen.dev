@@ -12,10 +12,10 @@
     >
       <P5CubePoints
         v-if="isVisible"
-        :num-spheres="100"
+        :num-spheres="50"
         :cube-display-state="
-          cloudPointsDisplayState
-            ? cloudPointsDisplayState
+          displayState
+            ? displayState
             : active
             ? CubeCloudPointsState.GET_3D_COORDS_FROM_POSE_MATRIX
             : CubeCloudPointsState.START
@@ -43,7 +43,7 @@ export default {
       type: Boolean,
       required: true,
     },
-    cloudPointsDisplayState: {
+    displayState: {
       type: String,
       default: null,
       validate: (displayState) =>

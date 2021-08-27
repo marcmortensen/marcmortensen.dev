@@ -11,13 +11,24 @@ import {
   github,
   jest,
   npm,
+  openCV,
 } from './technology';
-const cellCounterId = 'cell-counter';
-export const DEFAULT_PROJECT_ID = cellCounterId;
+const slamId = 'mono-slam';
+export const DEFAULT_PROJECT_ID = slamId;
+
+export const sentimentAnalysis = {
+  index: 2,
+  id: 'sentiment-analysis',
+  title: 'Sentiment Analysis',
+  shortDescription: 'Teaching machines about feelings!',
+  year: 2019,
+  background: ProjectOverviewBackgroundSentimentAnalysis,
+  technologies: [nodeJs, brainJs, typeScript, yarn],
+};
 
 export const cellCounter = {
-  index: 0,
-  id: cellCounterId,
+  index: 1,
+  id: 'cell-counter',
   title: 'Cell Counter',
   shortDescription: 'Counting circles, how hard can it get?',
   year: 2020,
@@ -36,20 +47,8 @@ export const cellCounter = {
   ],
 };
 
-export const sentimentAnalysis = {
-  index: 1,
-  id: 'sentiment-analysis',
-  title: 'Sentiment Analysis',
-  shortDescription: 'Teaching machines about feelings!',
-  year: 2019,
-  background: ProjectOverviewBackgroundSentimentAnalysis,
-  technologies: [nodeJs, brainJs, typeScript, yarn],
-};
-
-// TODO: ADD OPENCV AS TECHNOLOGY
-
 export const slam = {
-  index: 2,
+  index: 0,
   id: 'mono-slam',
   title: 'S.L.A.M',
   shortDescription: '3D is better than 2D',
@@ -57,6 +56,7 @@ export const slam = {
   background: ProjectOverviewBackgroundSLAM,
   technologies: [
     nodeJs,
+    openCV,
     typeScript,
     yarn,
     {
