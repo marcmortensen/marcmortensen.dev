@@ -1,6 +1,7 @@
 <template>
-  <client-only>
+  <client-only class="bg-white">
     <div
+      v-if="observeVisibility"
       v-observe-visibility="{
         callback: visibilityChanged,
         intersection: {
@@ -8,10 +9,22 @@
           rootMargin: '0px 0px 0px 0px', //0px 50% 0px 50% (top, right, bottom, left)
         },
       }"
-      class="bg-white"
     >
       <P5CubePoints
         v-if="isVisible"
+        :num-spheres="25"
+        :cube-display-state="
+          displayState
+            ? displayState
+            : active
+            ? CubeCloudPointsState.GET_3D_COORDS_FROM_POSE_MATRIX
+            : CubeCloudPointsState.START
+        "
+        class="w-full h-full"
+      />
+    </div>
+    <div v-else>
+      <P5CubePoints
         :num-spheres="25"
         :cube-display-state="
           displayState
@@ -39,6 +52,11 @@ export default {
     P5CubePoints,
   },
   props: {
+    observeVisibility: {
+      type: Boolean,
+      required: false,
+      default: () => true,
+    },
     active: {
       type: Boolean,
       required: true,

@@ -1,6 +1,7 @@
 <template>
-  <client-only>
+  <client-only class="bg-white">
     <div
+      v-if="observeVisibility"
       v-observe-visibility="{
         callback: visibilityChanged,
         intersection: {
@@ -8,10 +9,22 @@
           rootMargin: '0px 0px 0px 0px', //0px 50% 0px 50% (top, right, bottom, left)
         },
       }"
-      class="bg-white"
     >
       <P5Cells
         v-if="isVisible"
+        :cells="cellsToShow"
+        :cell-display-state="
+          cellDisplayState
+            ? cellDisplayState
+            : active
+            ? CellDisplayState.RESULT
+            : CellDisplayState.START
+        "
+        class="w-full h-full"
+      />
+    </div>
+    <div v-else>
+      <P5Cells
         :cells="cellsToShow"
         :cell-display-state="
           cellDisplayState
@@ -40,6 +53,11 @@ export default {
     P5Cells,
   },
   props: {
+    observeVisibility: {
+      type: Boolean,
+      required: false,
+      default: () => true,
+    },
     active: {
       type: Boolean,
       required: true,

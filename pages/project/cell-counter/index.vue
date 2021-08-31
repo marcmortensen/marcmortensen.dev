@@ -18,6 +18,7 @@
           :is="project.background"
           :active="false"
           :cell-display-state="currentCellDisplayState"
+          :observe-visibility="false"
           class="w-full h-full"
         />
         <div

@@ -18,6 +18,7 @@
           :is="project.background"
           :active="false"
           :display-state="currentDisplayState"
+          :observe-visibility="false"
           class="w-full h-full lg:fixed"
           :class="
             currentDisplayState ===
